@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REZZ STORE - Professional AM Editor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #091711; /* Gelap premium agar efek liquid glass menyala */
+            min-height: 100vh;
+            color: #ecfdf5;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- LIQUID BACKGROUND ORBS --- */
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            background: linear-gradient(135deg, #00d285 0%, #10b981 100%);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: pulse 10s infinite alternate;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            top: -10%;
+            left: -10%;
+            background: linear-gradient(135deg, #d4fc79 0%, #00d285 100%);
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -10%;
+            right: -10%;
+            background: linear-gradient(135deg, #059669 0%, #34d399 100%);
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #10b981;
+            opacity: 0.2;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) translate(0px, 0px); }
+            100% { transform: scale(1.2) translate(30px, -50px); }
+        }
+
+        /* --- ULTRA LIQUID GLASSMORPHISM --- */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        .logo-container {
+            width: 110px;
+            height: 110px;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 35px rgba(0, 210, 133, 0.2),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.3);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .logo-container svg {
+            filter: drop-shadow(0 0 8px #00d285);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 650px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            color: #cbd5e1;
+            font-weight: 300;
+        }
+
+        .btn-scroll {
+            padding: 16px 45px;
+            background: linear-gradient(135deg, #00d285 0%, #059669 100%);
+            color: #042f1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0, 210, 133, 0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-scroll:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 210, 133, 0.5);
+            color: white;
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #ffffff 0%, #6ee7b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .category-box {
+            padding: 35px;
+        }
+
+        .category-box h2 {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .category-box h2 i {
+            color: #34d399;
+            filter: drop-shadow(0 0 5px rgba(52, 211, 153, 0.5));
+        }
+
+        /* Menu Item Card Liquid Style */
+        .item-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .item-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+
+        /* State Terpilih */
+        .item-card.active {
+            background: rgba(0, 210, 133, 0.15);
+            border-color: #00d285;
+            box-shadow: 0 0 20px rgba(0, 210, 133, 0.2),
+                        inset 0 1px 10px rgba(0, 210, 133, 0.2);
+        }
+
+        .item-info h4 { font-size: 1.15rem; font-weight: 700; color: #fff; }
+        .item-info p { font-size: 0.9rem; color: #94a3b8; margin-top: 4px; }
+        .price-tag { 
+            font-weight: 800; 
+            color: #34d399; 
+            font-size: 1.2rem;
+            background: rgba(52, 211, 153, 0.1);
+            padding: 6px 14px;
+            border-radius: 12px;
+        }
+
+        /* Custom & Total Section */
+        .order-summary {
+            margin-top: 60px;
+            padding: 45px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .custom-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .custom-input-group label { font-weight: 600; color: #e2e8f0; }
+
+        .custom-input-group input {
+            padding: 16px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem;
+            color: #fff;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .custom-input-group input:focus {
+            border-color: #00d285;
+            box-shadow: 0 0 15px rgba(0, 210, 133, 0.2);
+        }
+
+        .total-box {
+            text-align: right;
+        }
+
+        .total-box h3 { font-size: 1.1rem; color: #94a3b8; font-weight: 400; }
+        .total-box .grand-total { 
+            font-size: 3.5rem; 
+            font-weight: 800; 
+            color: #00d285; 
+            margin: 5px 0;
+            text-shadow: 0 0 20px rgba(0, 210, 133, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #00d285 0%, #059669 100%);
+            color: #042f1a;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 18px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 210, 133, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 210, 133, 0.4);
+        }
+
+        /* --- OVERLAY MODAL ATURAN --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 15, 11, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 550px;
+            padding: 40px;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.show .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-box h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #fff;
+            text-align: center;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #6ee7b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .rules-list {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+
+        .rules-list li {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .rules-list li i {
+            color: #00d285;
+            margin-top: 4px;
+            font-size: 1.1rem;
+        }
+
+        .btn-modal-order {
+            background: linear-gradient(135deg, #25d366 0%, #1c9c4c 100%);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            border-radius: 16px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-modal-order:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .btn-close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-close-modal:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .order-summary { grid-template-columns: 1fr; gap: 30px; padding: 30px; }
+            .total-box { text-align: left; }
+            .modal-box { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="liquid-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <section class="hero">
+        <div class="logo-container">
+            <svg width="65" height="65" viewBox="0 0 24 24" fill="#00d285">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z"/>
+            </svg>
+        </div>
+        <h1>REZZ STORE</h1>
+        <p>
+            Penyedia jasa editing video Alight Motion (AM) profesional. Spesialisasi pembuatan video <b>Jedag-Jedug (JJ)</b> dengan transisi super fluid, efek premium, dan pengerjaan kilat.
+        </p>
+        <a href="#menu" class="btn-scroll">Explore Pricelist & Order</a>
+    </section>
+
+    <section id="menu" class="main-content">
+        <h2 class="section-title">Pilih Paket Editing</h2>
+
+        <div class="menu-grid">
+            <div class="category-box glass">
+                <h2><i class="fa-solid fa-box-open"></i> Paket Hemat</h2>
+                <div class="item-card" onclick="pilihItem(this, 'Paket 10 Video', 8000, 'paket')">
+                    <div class="item-info">
+                        <h4>Paket 10 Video</h4>
+                        <p>Hemat Rp 2.000</p>
+                    </div>
+                    <div class="price-tag">Rp 8k</div>
+                </div>
+                <div class="item-card" onclick="pilihItem(this, 'Paket 20 Video', 15000, 'paket')">
+                    <div class="item-info">
+                        <h4>Paket 20 Video</h4>
+                        <p>Stok konten seminggu</p>
+                    </div>
+                    <div class="price-tag">Rp 15k</div>
+                </div>
+                <div class="item-card" onclick="pilihItem(this, 'Paket 50 Video', 35000, 'paket')">
+                    <div class="item-info">
+                        <h4>Paket 50 Video</h4>
+                        <p>Paket Reseller / Sultan</p>
+                    </div>
+                    <div class="price-tag">Rp 35k</div>
+                </div>
+            </div>
+
+            <div class="category-box glass">
+                <h2><i class="fa-solid fa-crown"></i> Membership</h2>
+                <div class="item-card" onclick="pilihItem(this, 'VIP Member', 5000, 'member')">
+                    <div class="item-info">
+                        <h4>VIP Member</h4>
+                        <p>10 video/minggu + Akses Prioritas</p>
+                    </div>
+                    <div class="price-tag">Rp 5k</div>
+                </div>
+                <div class="item-card" onclick="pilihItem(this, 'Pro Member VVIP', 20000, 'member')">
+                    <div class="item-info">
+                        <h4>Pro Member VVIP</h4>
+                        <p>35 video/bulan + Efek Khusus VIP</p>
+                    </div>
+                    <div class="price-tag">Rp 20k</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-summary glass">
+            <div class="custom-input-group">
+                <label for="input-custom">Mau Custom Jumlah? (1 video = 1k)</label>
+                <input type="number" id="input-custom" placeholder="Contoh: 7" oninput="hitungCustom()">
+                <p style="font-size: 0.8rem; color: #94a3b8;">*Masukkan total angka video</p>
+            </div>
+            
+            <div class="total-box">
+                <h3 id="label-pilihan">Pilihan: Belum ada</h3>
+                <div class="grand-total" id="grand-total">Rp 0</div>
+                <button class="btn-whatsapp" onclick="bukaAturan()">
+                    <i class="fa-solid fa-cart-shopping"></i> KIRIM ORDERAN
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="modalAturan">
+        <div class="modal-box glass">
+            <button class="btn-close-modal" onclick="tutupAturan()">&times;</button>
+            <h2>Aturan Pembelian</h2>
+            <ul class="rules-list">
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><b>Kirim Bahan Jelas:</b> Siapkan materi video, lagu/sound, dan konsep jedag-jedug yang diinginkan sebelum chat admin.</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><b>Sistem Pembayaran:</b> Pembayaran dilakukan di awal via E-Wallet (Dana/Ovo/Gopay) sebelum proses editing dimulai.</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><b>Batas Maksimal Revisi:</b> Setiap orderan mendapatkan jatah maksimal 2x revisi minor setelah video selesai dibuat.</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><b>Waktu Pengerjaan:</b> Video dikerjakan sesuai antrean, estimasi pengerjaan kilat 1-24 jam tergantung slot kosong.</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><b>No Refund & Cancel:</b> Pesanan yang sudah diproses dan masuk antrean tidak dapat dibatalkan atau dikembalikan uang.</span>
+                </li>
+            </ul>
+            <button class="btn-modal-order" onclick="gasOrder()">
+                <i class="fa-brands fa-whatsapp"></i> Setuju & Pesan Sekarang
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const WHATSAPP_NUMBER = "6281398098107";
+        let total = 0, deskripsi = "", mode = "", customQty = 0;
+
+        function pilihItem(element, nama, harga, tipe) {
+            document.getElementById('input-custom').value = "";
+            document.querySelectorAll('.item-card').forEach(card => card.classList.remove('active'));
+            element.classList.add('active');
+            
+            mode = tipe; total = harga; deskripsi = nama;
+            updateUI();
+        }
+
+        function hitungCustom() {
+            let val = document.getElementById('input-custom').value;
+            document.querySelectorAll('.item-card').forEach(card => card.classList.remove('active'));
+
+            if(val > 0) {
+                mode = "custom"; customQty = val; total = val * 1000; deskripsi = val + " Video Custom";
+            } else {
+                total = 0; deskripsi = "Belum ada"; mode = "";
+            }
+            updateUI();
+        }
+
+        function updateUI() {
+            document.getElementById('label-pilihan').innerText = "Pilihan: " + deskripsi;
+            document.getElementById('grand-total').innerText = "Rp " + total.toLocaleString('id-ID');
+        }
+
+        /* --- FUNGSI MODAL ATURAN --- */
+        function bukaAturan() {
+            if (total === 0) { 
+                alert("Pilih paket dulu bro!"); 
+                return; 
+            }
+            document.getElementById('modalAturan').classList.add('show');
+        }
+
+        function tutupAturan() {
+            document.getElementById('modalAturan').classList.remove('show');
+        }
+
+        function gasOrder() {
+            tutupAturan(); // Tutup pop-up sebelum beralih ke WA
+            let message = mode === "custom" 
+                ? `Hai admin, saya ingin pesan ${customQty} video seharga ${total/1000}k via website.` 
+                : `Halo Admin REZZ STORE, saya mau pesan ${deskripsi} seharga Rp ${total.toLocaleString('id-ID')}`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
