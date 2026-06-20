@@ -1,608 +1,608 @@
-<!DOCTYPE html> -->
-<!-- <html lang="id"> -->
-<!-- <head> -->
-    <!-- <meta charset="UTF-8"> -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
-    <!-- <title>REZZ STORE - Professional AM Editor</title> -->
-    Fonts & Icons
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> -->
-    AOS Animation Library CDN
-    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>REZZ STORE - Professional AM Editor</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- AOS Animation Library CDN -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- <style> -->
-        <!-- * { -->
-            <!-- margin: 0; -->
-            <!-- padding: 0; -->
-            <!-- box-sizing: border-box; -->
-            <!-- font-family: 'Plus Jakarta Sans', sans-serif; -->
-            <!-- scroll-behavior: smooth; -->
-            <!-- -webkit-tap-highlight-color: transparent; /* Menghilangkan highlight biru saat klik di HP */ -->
-        <!-- } -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent; /* Menghilangkan highlight biru saat klik di HP */
+        }
 
-        <!-- /* Wrapper utama untuk memaksa tampilan selalu berukuran Mobile */ -->
-        <!-- body { -->
-            <!-- background: #050d0a; /* Background luar lebih gelap untuk fokus ke frame mobile */ -->
-            <!-- min-height: 100vh; -->
-            <!-- color: #ecfdf5; -->
-            <!-- display: flex; -->
-            <!-- justify-content: center; -->
-            <!-- align-items: flex-start; -->
-            <!-- overflow-x: hidden; -->
-        <!-- } -->
+        /* Wrapper utama untuk memaksa tampilan selalu berukuran Mobile */
+        body {
+            background: #050d0a; /* Background luar lebih gelap untuk fokus ke frame mobile */
+            min-height: 100vh;
+            color: #ecfdf5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-x: hidden;
+        }
 
-        <!-- /* Container Pembatas Ukuran HP (Max 480px) */ -->
-        <!-- .mobile-container { -->
-            <!-- width: 100%; -->
-            <!-- max-width: 480px; -->
-            <!-- min-height: 100vh; -->
-            <!-- background: #091711; /* Warna asli background premium */ -->
-            <!-- position: relative; -->
-            <!-- box-shadow: 0 0 40px rgba(0, 0, 0, 0.6); -->
-            <!-- overflow-x: hidden; -->
-            <!-- padding-bottom: 40px; -->
-        <!-- } -->
+        /* Container Pembatas Ukuran HP (Max 480px) */
+        .mobile-container {
+            width: 100%;
+            max-width: 480px;
+            min-height: 100vh;
+            background: #091711; /* Warna asli background premium */
+            position: relative;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+            overflow-x: hidden;
+            padding-bottom: 40px;
+        }
 
-        <!-- /* --- LIQUID BACKGROUND ORBS (Disesuaikan skala HP) --- */ -->
-        <!-- .liquid-bg { -->
-            <!-- position: absolute; -->
-            <!-- top: 0; -->
-            <!-- left: 0; -->
-            <!-- width: 100%; -->
-            <!-- height: 100%; -->
-            <!-- z-index: 0; -->
-            <!-- overflow: hidden; -->
-            <!-- pointer-events: none; -->
-        <!-- } -->
+        /* --- LIQUID BACKGROUND ORBS (Disesuaikan skala HP) --- */
+        .liquid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
 
-        <!-- .blob { -->
-            <!-- position: absolute; -->
-            <!-- background: linear-gradient(135deg, #00d285 0%, #10b981 100%); -->
-            <!-- border-radius: 50%; -->
-            <!-- filter: blur(60px); -->
-            <!-- opacity: 0.35; -->
-            <!-- animation: pulse 10s infinite alternate ease-in-out; -->
-        <!-- } -->
+        .blob {
+            position: absolute;
+            background: linear-gradient(135deg, #00d285 0%, #10b981 100%);
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.35;
+            animation: pulse 10s infinite alternate ease-in-out;
+        }
 
-        <!-- .blob-1 { -->
-            <!-- width: 250px; -->
-            <!-- height: 250px; -->
-            <!-- top: -5%; -->
-            <!-- left: -15%; -->
-            <!-- background: linear-gradient(135deg, #d4fc79 0%, #00d285 100%); -->
-        <!-- } -->
+        .blob-1 {
+            width: 250px;
+            height: 250px;
+            top: -5%;
+            left: -15%;
+            background: linear-gradient(135deg, #d4fc79 0%, #00d285 100%);
+        }
 
-        <!-- .blob-2 { -->
-            <!-- width: 300px; -->
-            <!-- height: 300px; -->
-            <!-- bottom: 10%; -->
-            <!-- right: -20%; -->
-            <!-- background: linear-gradient(135deg, #059669 0%, #34d399 100%); -->
-        <!-- } -->
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            bottom: 10%;
+            right: -20%;
+            background: linear-gradient(135deg, #059669 0%, #34d399 100%);
+        }
 
-        <!-- @keyframes pulse { -->
-            <!-- 0% { transform: scale(1) translate(0px, 0px); } -->
-            <!-- 100% { transform: scale(1.1) translate(15px, -20px); } -->
-        <!-- } -->
+        @keyframes pulse {
+            0% { transform: scale(1) translate(0px, 0px); }
+            100% { transform: scale(1.1) translate(15px, -20px); }
+        }
 
-        <!-- /* Konten ditaruh di atas layer background */ -->
-        <!-- .content-wrapper { -->
-            <!-- position: relative; -->
-            <!-- z-index: 1; -->
-        <!-- } -->
+        /* Konten ditaruh di atas layer background */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
 
-        <!-- /* --- ULTRA LIQUID GLASSMORPHISM --- */ -->
-        <!-- .glass { -->
-            <!-- background: rgba(255, 255, 255, 0.04); -->
-            <!-- backdrop-filter: blur(20px) saturate(180%); -->
-            <!-- -webkit-backdrop-filter: blur(20px) saturate(180%); -->
-            <!-- border: 1px solid rgba(255, 255, 255, 0.08); -->
-            <!-- border-radius: 24px; -->
-            <!-- box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); -->
-        <!-- } -->
+        /* --- ULTRA LIQUID GLASSMORPHISM --- */
+        .glass {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
 
-        <!-- /* --- HERO SECTION --- */ -->
-        <!-- .hero { -->
-            <!-- height: 95vh; -->
-            <!-- display: flex; -->
-            <!-- flex-direction: column; -->
-            <!-- justify-content: center; -->
-            <!-- align-items: center; -->
-            <!-- text-align: center; -->
-            <!-- padding: 0 24px; -->
-        <!-- } -->
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 24px;
+        }
 
-        <!-- .logo-container { -->
-            <!-- width: 95px; -->
-            <!-- height: 95px; -->
-            <!-- background: rgba(255, 255, 255, 0.07); -->
-            <!-- backdrop-filter: blur(10px); -->
-            <!-- border: 1px solid rgba(255, 255, 255, 0.2); -->
-            <!-- border-radius: 26px; -->
-            <!-- display: flex; -->
-            <!-- justify-content: center; -->
-            <!-- align-items: center; -->
-            <!-- margin-bottom: 20px; -->
-            <!-- box-shadow: 0 12px 30px rgba(0, 210, 133, 0.25); -->
-            <!-- animation: float 4s ease-in-out infinite; -->
-        <!-- } -->
+        .logo-container {
+            width: 95px;
+            height: 95px;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 12px 30px rgba(0, 210, 133, 0.25);
+            animation: float 4s ease-in-out infinite;
+        }
 
-        <!-- .logo-container svg { -->
-            <!-- width: 50px; -->
-            <!-- height: 50px; -->
-            <!-- filter: drop-shadow(0 0 6px #00d285); -->
-        <!-- } -->
+        .logo-container svg {
+            width: 50px;
+            height: 50px;
+            filter: drop-shadow(0 0 6px #00d285);
+        }
 
-        <!-- @keyframes float { -->
-            <!-- 0%, 100% { transform: translateY(0); } -->
-            <!-- 50% { transform: translateY(-10px); } -->
-        <!-- } -->
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
-        <!-- .hero h1 { -->
-            <!-- font-size: 2.6rem; -->
-            <!-- font-weight: 800; -->
-            <!-- letter-spacing: -0.5px; -->
-            <!-- margin-bottom: 12px; -->
-            <!-- background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 100%); -->
-            <!-- -webkit-background-clip: text; -->
-            <!-- -webkit-text-fill-color: transparent; -->
-        <!-- } -->
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        <!-- .hero p { -->
-            <!-- font-size: 0.98rem; -->
-            <!-- line-height: 1.6; -->
-            <!-- margin-bottom: 30px; -->
-            <!-- color: #cbd5e1; -->
-            <!-- font-weight: 300; -->
-        <!-- } -->
+        .hero p {
+            font-size: 0.98rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #cbd5e1;
+            font-weight: 300;
+        }
 
-        <!-- .btn-scroll { -->
-            <!-- padding: 15px 40px; -->
-            <!-- background: linear-gradient(135deg, #00d285 0%, #059669 100%); -->
-            <!-- color: #042f1a; -->
-            <!-- text-decoration: none; -->
-            <!-- border-radius: 50px; -->
-            <!-- font-weight: 700; -->
-            <!-- font-size: 0.95rem; -->
-            <!-- box-shadow: 0 10px 25px rgba(0, 210, 133, 0.3); -->
-            <!-- border: 1px solid rgba(255,255,255,0.2); -->
-            <!-- transition: 0.3s ease; -->
-        <!-- } -->
+        .btn-scroll {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #00d285 0%, #059669 100%);
+            color: #042f1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px rgba(0, 210, 133, 0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: 0.3s ease;
+        }
 
-        <!-- .btn-scroll:active { -->
-            <!-- transform: scale(0.97); -->
-        <!-- } -->
+        .btn-scroll:active {
+            transform: scale(0.97);
+        }
 
-        <!-- /* --- MAIN CONTENT --- */ -->
-        <!-- .main-content { -->
-            <!-- padding: 40px 16px; -->
-        <!-- } -->
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            padding: 40px 16px;
+        }
 
-        <!-- .section-title { -->
-            <!-- text-align: center; -->
-            <!-- font-size: 1.8rem; -->
-            <!-- font-weight: 800; -->
-            <!-- margin-bottom: 30px; -->
-            <!-- background: linear-gradient(135deg, #ffffff 0%, #6ee7b7 100%); -->
-            <!-- -webkit-background-clip: text; -->
-            <!-- -webkit-text-fill-color: transparent; -->
-        <!-- } -->
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #6ee7b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        <!-- .menu-flex { -->
-            <!-- display: flex; -->
-            <!-- flex-direction: column; -->
-            <!-- gap: 24px; -->
-        <!-- } -->
+        .menu-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
 
-        <!-- .category-box { -->
-            <!-- padding: 20px; -->
-        <!-- } -->
+        .category-box {
+            padding: 20px;
+        }
 
-        <!-- .category-box h2 { -->
-            <!-- margin-bottom: 18px; -->
-            <!-- display: flex; -->
-            <!-- align-items: center; -->
-            <!-- gap: 10px; -->
-            <!-- font-size: 1.3rem; -->
-            <!-- color: #fff; -->
-        <!-- } -->
+        .category-box h2 {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            color: #fff;
+        }
 
-        <!-- .category-box h2 i { -->
-            <!-- color: #34d399; -->
-        <!-- } -->
+        .category-box h2 i {
+            color: #34d399;
+        }
 
-        <!-- /* Menu Item Card */ -->
-        <!-- .item-card { -->
-            <!-- background: rgba(255, 255, 255, 0.02); -->
-            <!-- padding: 16px; -->
-            <!-- border-radius: 16px; -->
-            <!-- margin-bottom: 12px; -->
-            <!-- cursor: pointer; -->
-            <!-- display: flex; -->
-            <!-- justify-content: space-between; -->
-            <!-- align-items: center; -->
-            <!-- border: 1px solid rgba(255,255,255,0.04); -->
-            <!-- transition: all 0.25s ease; -->
-        <!-- } -->
+        /* Menu Item Card */
+        .item-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.04);
+            transition: all 0.25s ease;
+        }
 
-        <!-- .item-card:active { -->
-            <!-- transform: scale(0.98); -->
-            <!-- background: rgba(255, 255, 255, 0.06); -->
-        <!-- } -->
+        .item-card:active {
+            transform: scale(0.98);
+            background: rgba(255, 255, 255, 0.06);
+        }
 
-        <!-- .item-card.active { -->
-            <!-- background: rgba(0, 210, 133, 0.12); -->
-            <!-- border-color: #00d285; -->
-            <!-- box-shadow: inset 0 1px 8px rgba(0, 210, 133, 0.15); -->
-        <!-- } -->
+        .item-card.active {
+            background: rgba(0, 210, 133, 0.12);
+            border-color: #00d285;
+            box-shadow: inset 0 1px 8px rgba(0, 210, 133, 0.15);
+        }
 
-        <!-- .item-info h4 { font-size: 1.05rem; font-weight: 700; color: #fff; } -->
-        <!-- .item-info p { font-size: 0.82rem; color: #94a3b8; margin-top: 2px; } -->
+        .item-info h4 { font-size: 1.05rem; font-weight: 700; color: #fff; }
+        .item-info p { font-size: 0.82rem; color: #94a3b8; margin-top: 2px; }
         
-        <!-- .price-tag {  -->
-            <!-- font-weight: 800;  -->
-            <!-- color: #34d399;  -->
-            <!-- font-size: 1rem; -->
-            <!-- background: rgba(52, 211, 153, 0.08); -->
-            <!-- padding: 5px 12px; -->
-            <!-- border-radius: 10px; -->
-            <!-- transition: 0.2s; -->
-        <!-- } -->
+        .price-tag { 
+            font-weight: 800; 
+            color: #34d399; 
+            font-size: 1rem;
+            background: rgba(52, 211, 153, 0.08);
+            padding: 5px 12px;
+            border-radius: 10px;
+            transition: 0.2s;
+        }
         
-        <!-- .item-card.active .price-tag { -->
-            <!-- background: #00d285; -->
-            <!-- color: #042f1a; -->
-        <!-- } -->
+        .item-card.active .price-tag {
+            background: #00d285;
+            color: #042f1a;
+        }
 
-        <!-- /* Summary Area */ -->
-        <!-- .order-summary { -->
-            <!-- margin-top: 24px; -->
-            <!-- padding: 24px; -->
-            <!-- display: flex; -->
-            <!-- flex-direction: column; -->
-            <!-- gap: 20px; -->
-        <!-- } -->
+        /* Summary Area */
+        .order-summary {
+            margin-top: 24px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-        <!-- .custom-input-group { -->
-            <!-- display: flex; -->
-            <!-- flex-direction: column; -->
-            <!-- gap: 8px; -->
-        <!-- } -->
+        .custom-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-        <!-- .custom-input-group label { font-weight: 600; color: #e2e8f0; font-size: 0.88rem; } -->
+        .custom-input-group label { font-weight: 600; color: #e2e8f0; font-size: 0.88rem; }
 
-        <!-- .custom-input-group input { -->
-            <!-- padding: 14px; -->
-            <!-- border-radius: 14px; -->
-            <!-- border: 1px solid rgba(255,255,255,0.1); -->
-            <!-- background: rgba(0, 0, 0, 0.25); -->
-            <!-- font-size: 1rem; -->
-            <!-- color: #fff; -->
-            <!-- outline: none; -->
-            <!-- transition: 0.2s; -->
-        <!-- } -->
+        .custom-input-group input {
+            padding: 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0, 0, 0, 0.25);
+            font-size: 1rem;
+            color: #fff;
+            outline: none;
+            transition: 0.2s;
+        }
 
-        <!-- .custom-input-group input:focus { -->
-            <!-- border-color: #00d285; -->
-        <!-- } -->
+        .custom-input-group input:focus {
+            border-color: #00d285;
+        }
 
-        <!-- .total-box { -->
-            <!-- text-align: left; -->
-            <!-- border-top: 1px solid rgba(255,255,255,0.08); -->
-            <!-- padding-top: 15px; -->
-        <!-- } -->
+        .total-box {
+            text-align: left;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 15px;
+        }
 
-        <!-- .total-box h3 { font-size: 0.9rem; color: #94a3b8; font-weight: 400; } -->
+        .total-box h3 { font-size: 0.9rem; color: #94a3b8; font-weight: 400; }
         
-        <!-- .total-box .grand-total {  -->
-            <!-- font-size: 2.5rem;  -->
-            <!-- font-weight: 800;  -->
-            <!-- color: #00d285;  -->
-            <!-- margin: 2px 0 10px 0; -->
-            <!-- text-shadow: 0 0 15px rgba(0, 210, 133, 0.25); -->
-        <!-- } -->
+        .total-box .grand-total { 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            color: #00d285; 
+            margin: 2px 0 10px 0;
+            text-shadow: 0 0 15px rgba(0, 210, 133, 0.25);
+        }
 
-        <!-- .btn-whatsapp { -->
-            <!-- background: linear-gradient(135deg, #00d285 0%, #059669 100%); -->
-            <!-- color: #042f1a; -->
-            <!-- border: none; -->
-            <!-- padding: 16px; -->
-            <!-- border-radius: 14px; -->
-            <!-- font-size: 1.1rem; -->
-            <!-- font-weight: 800; -->
-            <!-- cursor: pointer; -->
-            <!-- width: 100%; -->
-            <!-- display: flex; -->
-            <!-- justify-content: center; -->
-            <!-- align-items: center; -->
-            <!-- gap: 10px; -->
-            <!-- box-shadow: 0 8px 20px rgba(0, 210, 133, 0.2); -->
-        <!-- } -->
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #00d285 0%, #059669 100%);
+            color: #042f1a;
+            border: none;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0, 210, 133, 0.2);
+        }
 
-        <!-- /* --- MODAL MOBILE OPTIMIZED --- */ -->
-        <!-- .modal-overlay { -->
-            <!-- position: fixed; -->
-            <!-- top: 0; -->
-            <!-- left: 0; -->
-            <!-- width: 100%; -->
-            <!-- height: 100%; -->
-            <!-- background: rgba(4, 15, 11, 0.85); -->
-            <!-- backdrop-filter: blur(10px); -->
-            <!-- -webkit-backdrop-filter: blur(10px); -->
-            <!-- z-index: 999; -->
-            <!-- display: flex; -->
-            <!-- justify-content: center; -->
-            <!-- align-items: flex-end; /* Membuka modal dari bawah (ciri khas app HP) */ -->
-            <!-- opacity: 0; -->
-            <!-- pointer-events: none; -->
-            <!-- transition: opacity 0.3s ease; -->
-        <!-- } -->
+        /* --- MODAL MOBILE OPTIMIZED --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 15, 11, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Membuka modal dari bawah (ciri khas app HP) */
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
 
-        <!-- .modal-overlay.show { -->
-            <!-- opacity: 1; -->
-            <!-- pointer-events: auto; -->
-        <!-- } -->
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
 
-        <!-- .modal-box { -->
-            <!-- width: 100%; -->
-            <!-- max-width: 480px; -->
-            <!-- padding: 30px 20px; -->
-            <!-- background: #091711; -->
-            <!-- border-radius: 24px 24px 0 0; /* Lengkungan hanya di atas */ -->
-            <!-- border-top: 1px solid rgba(255, 255, 255, 0.15); -->
-            <!-- transform: translateY(100%); -->
-            <!-- transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); -->
-            <!-- max-height: 85vh; -->
-            <!-- overflow-y: auto; -->
-        <!-- } -->
+        .modal-box {
+            width: 100%;
+            max-width: 480px;
+            padding: 30px 20px;
+            background: #091711;
+            border-radius: 24px 24px 0 0; /* Lengkungan hanya di atas */
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
 
-        <!-- .modal-overlay.show .modal-box { -->
-            <!-- transform: translateY(0); -->
-        <!-- } -->
+        .modal-overlay.show .modal-box {
+            transform: translateY(0);
+        }
 
-        <!-- .modal-box h2 { -->
-            <!-- font-size: 1.5rem; -->
-            <!-- margin-bottom: 20px; -->
-            <!-- color: #fff; -->
-            <!-- text-align: center; -->
-            <!-- font-weight: 800; -->
-        <!-- } -->
+        .modal-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+            font-weight: 800;
+        }
 
-        <!-- .rules-list { -->
-            <!-- list-style: none; -->
-            <!-- margin-bottom: 25px; -->
-        <!-- } -->
+        .rules-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
 
-        <!-- .rules-list li { -->
-            <!-- font-size: 0.92rem; -->
-            <!-- line-height: 1.5; -->
-            <!-- margin-bottom: 14px; -->
-            <!-- color: #cbd5e1; -->
-            <!-- display: flex; -->
-            <!-- gap: 10px; -->
-        <!-- } -->
+        .rules-list li {
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin-bottom: 14px;
+            color: #cbd5e1;
+            display: flex;
+            gap: 10px;
+        }
 
-        <!-- .rules-list li i { -->
-            <!-- color: #00d285; -->
-            <!-- margin-top: 3px; -->
-        <!-- } -->
+        .rules-list li i {
+            color: #00d285;
+            margin-top: 3px;
+        }
 
-        <!-- .btn-modal-order { -->
-            <!-- background: linear-gradient(135deg, #25d366 0%, #1c9c4c 100%); -->
-            <!-- color: white; -->
-            <!-- border: none; -->
-            <!-- padding: 16px; -->
-            <!-- border-radius: 14px; -->
-            <!-- font-size: 1.05rem; -->
-            <!-- font-weight: 800; -->
-            <!-- width: 100%; -->
-            <!-- display: flex; -->
-            <!-- justify-content: center; -->
-            <!-- align-items: center; -->
-            <!-- gap: 10px; -->
-        <!-- } -->
+        .btn-modal-order {
+            background: linear-gradient(135deg, #25d366 0%, #1c9c4c 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
 
-        <!-- .btn-close-modal { -->
-            <!-- position: absolute; -->
-            <!-- top: 15px; -->
-            <!-- right: 20px; -->
-            <!-- background: transparent; -->
-            <!-- border: none; -->
-            <!-- color: #94a3b8; -->
-            <!-- font-size: 1.6rem; -->
-            <!-- cursor: pointer; -->
-        <!-- } -->
-    <!-- </style> -->
-<!-- </head> -->
-<!-- <body> -->
+        .btn-close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
 
-    Pembatas luar agar simulasi layar HP aktif
-    <!-- <div class="mobile-container"> -->
+    <!-- Pembatas luar agar simulasi layar HP aktif -->
+    <div class="mobile-container">
         
-        <!-- <div class="liquid-bg"> -->
-            <!-- <div class="blob blob-1"></div> -->
-            <!-- <div class="blob blob-2"></div> -->
-        <!-- </div> -->
+        <div class="liquid-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
 
-        <!-- <div class="content-wrapper"> -->
-            Hero Section
-            <!-- <section class="hero"> -->
-                <!-- <div class="logo-container" data-aos="zoom-in" data-aos-duration="800"> -->
-                    <!-- <svg viewBox="0 0 24 24" fill="#00d285"> -->
-                        <!-- <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z"/> -->
-                    <!-- </svg> -->
-                <!-- </div> -->
-                <!-- <h1 data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">REZZ STORE</h1> -->
-                <!-- <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="800"> -->
-                    <!-- Penyedia Jasa Editing Video Alight Motion (AM) Profesional. Spesialisasi video <b>Jedag-Jedug (JJ)</b> transisi fluid & efek premium kilat. -->
-                <!-- </p> -->
-                <!-- <div data-aos="fade-up" data-aos-delay="450" data-aos-duration="800"> -->
-                    <!-- <a href="#menu" class="btn-scroll">Explore Pricelist & Order</a> -->
-                <!-- </div> -->
-            <!-- </section> -->
+        <div class="content-wrapper">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="logo-container" data-aos="zoom-in" data-aos-duration="800">
+                    <svg viewBox="0 0 24 24" fill="#00d285">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z"/>
+                    </svg>
+                </div>
+                <h1 data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">REZZ STORE</h1>
+                <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+                    Penyedia Jasa Editing Video Alight Motion (AM) Profesional. Spesialisasi video <b>Jedag-Jedug (JJ)</b> transisi fluid & efek premium kilat.
+                </p>
+                <div data-aos="fade-up" data-aos-delay="450" data-aos-duration="800">
+                    <a href="#menu" class="btn-scroll">Explore Pricelist & Order</a>
+                </div>
+            </section>
 
-            Main Menu Section
-            <!-- <section id="menu" class="main-content"> -->
-                <!-- <h2 class="section-title" data-aos="fade-up" data-aos-duration="600">Pilih Paket Editing</h2> -->
+            <!-- Main Menu Section -->
+            <section id="menu" class="main-content">
+                <h2 class="section-title" data-aos="fade-up" data-aos-duration="600">Pilih Paket Editing</h2>
 
-                <!-- <div class="menu-flex"> -->
-                    Paket Hemat
-                    <!-- <div class="category-box glass" data-aos="fade-up" data-aos-duration="600"> -->
-                        <!-- <h2><i class="fa-solid fa-box-open"></i> Paket Hemat</h2> -->
-                        <!-- <div class="item-card" onclick="pilihItem(this, 'Paket 10 Video', 8000, 'paket')"> -->
-                            <!-- <div class="item-info"> -->
-                                <!-- <h4>Paket 10 Video</h4> -->
-                                <!-- <p>Hemat Rp 2.000</p> -->
-                            <!-- </div> -->
-                            <!-- <div class="price-tag">Rp 8k</div> -->
-                        <!-- </div> -->
-                        <!-- <div class="item-card" onclick="pilihItem(this, 'Paket 20 Video', 15000, 'paket')"> -->
-                            <!-- <div class="item-info"> -->
-                                <!-- <h4>Paket 20 Video</h4> -->
-                                <!-- <p>Stok konten seminggu</p> -->
-                            <!-- </div> -->
-                            <!-- <div class="price-tag">Rp 15k</div> -->
-                        <!-- </div> -->
-                        <!-- <div class="item-card" onclick="pilihItem(this, 'Paket 50 Video', 35000, 'paket')"> -->
-                            <!-- <div class="item-info"> -->
-                                <!-- <h4>Paket 50 Video</h4> -->
-                                <!-- <p>Paket Reseller / Sultan</p> -->
-                            <!-- </div> -->
-                            <!-- <div class="price-tag">Rp 35k</div> -->
-                        <!-- </div> -->
-                    <!-- </div> -->
+                <div class="menu-flex">
+                    <!-- Paket Hemat -->
+                    <div class="category-box glass" data-aos="fade-up" data-aos-duration="600">
+                        <h2><i class="fa-solid fa-box-open"></i> Paket Hemat</h2>
+                        <div class="item-card" onclick="pilihItem(this, 'Paket 10 Video', 8000, 'paket')">
+                            <div class="item-info">
+                                <h4>Paket 10 Video</h4>
+                                <p>Hemat Rp 2.000</p>
+                            </div>
+                            <div class="price-tag">Rp 8k</div>
+                        </div>
+                        <div class="item-card" onclick="pilihItem(this, 'Paket 20 Video', 15000, 'paket')">
+                            <div class="item-info">
+                                <h4>Paket 20 Video</h4>
+                                <p>Stok konten seminggu</p>
+                            </div>
+                            <div class="price-tag">Rp 15k</div>
+                        </div>
+                        <div class="item-card" onclick="pilihItem(this, 'Paket 50 Video', 35000, 'paket')">
+                            <div class="item-info">
+                                <h4>Paket 50 Video</h4>
+                                <p>Paket Reseller / Sultan</p>
+                            </div>
+                            <div class="price-tag">Rp 35k</div>
+                        </div>
+                    </div>
 
-                    Membership
-                    <!-- <div class="category-box glass" data-aos="fade-up" data-aos-duration="600"> -->
-                        <!-- <h2><i class="fa-solid fa-crown"></i> Membership</h2> -->
-                        <!-- <div class="item-card" onclick="pilihItem(this, 'VIP Member', 5000, 'member')"> -->
-                            <!-- <div class="item-info"> -->
-                                <!-- <h4>VIP Member</h4> -->
-                                <!-- <p>10 video/minggu + Akses Prioritas</p> -->
-                            <!-- </div> -->
-                            <!-- <div class="price-tag">Rp 5k</div> -->
-                        <!-- </div> -->
-                        <!-- <div class="item-card" onclick="pilihItem(this, 'Pro Member VVIP', 20000, 'member')"> -->
-                            <!-- <div class="item-info"> -->
-                                <!-- <h4>Pro Member VVIP</h4> -->
-                                <!-- <p>35 video/bulan + Efek Khusus VIP</p> -->
-                            <!-- </div> -->
-                            <!-- <div class="price-tag">Rp 20k</div> -->
-                        <!-- </div> -->
-                    <!-- </div> -->
-                <!-- </div> -->
+                    <!-- Membership -->
+                    <div class="category-box glass" data-aos="fade-up" data-aos-duration="600">
+                        <h2><i class="fa-solid fa-crown"></i> Membership</h2>
+                        <div class="item-card" onclick="pilihItem(this, 'VIP Member', 5000, 'member')">
+                            <div class="item-info">
+                                <h4>VIP Member</h4>
+                                <p>10 video/minggu + Akses Prioritas</p>
+                            </div>
+                            <div class="price-tag">Rp 5k</div>
+                        </div>
+                        <div class="item-card" onclick="pilihItem(this, 'Pro Member VVIP', 20000, 'member')">
+                            <div class="item-info">
+                                <h4>Pro Member VVIP</h4>
+                                <p>35 video/bulan + Efek Khusus VIP</p>
+                            </div>
+                            <div class="price-tag">Rp 20k</div>
+                        </div>
+                    </div>
+                </div>
 
-                Order Summary Box
-                <!-- <div class="order-summary glass" data-aos="fade-up" data-aos-duration="600"> -->
-                    <!-- <div class="custom-input-group"> -->
-                        <!-- <label for="input-custom">Mau Custom Jumlah? (1 video = 1k)</label> -->
-                        <!-- <input type="number" id="input-custom" placeholder="Contoh: 7" oninput="hitungCustom()"> -->
-                        <!-- <p style="font-size: 0.75rem; color: #94a3b8;">*Masukkan angka kuantitas video</p> -->
-                    <!-- </div> -->
+                <!-- Order Summary Box -->
+                <div class="order-summary glass" data-aos="fade-up" data-aos-duration="600">
+                    <div class="custom-input-group">
+                        <label for="input-custom">Mau Custom Jumlah? (1 video = 1k)</label>
+                        <input type="number" id="input-custom" placeholder="Contoh: 7" oninput="hitungCustom()">
+                        <p style="font-size: 0.75rem; color: #94a3b8;">*Masukkan angka kuantitas video</p>
+                    </div>
                     
-                    <!-- <div class="total-box"> -->
-                        <!-- <h3 id="label-pilihan">Pilihan: Belum ada</h3> -->
-                        <!-- <div class="grand-total" id="grand-total">Rp 0</div> -->
-                        <!-- <button class="btn-whatsapp" onclick="bukaAturan()"> -->
-                            <!-- <i class="fa-solid fa-cart-shopping"></i> KIRIM ORDERAN -->
-                        <!-- </button> -->
-                    <!-- </div> -->
-                <!-- </div> -->
-            <!-- </section> -->
-        <!-- </div> -->
-    <!-- </div> -->
+                    <div class="total-box">
+                        <h3 id="label-pilihan">Pilihan: Belum ada</h3>
+                        <div class="grand-total" id="grand-total">Rp 0</div>
+                        <button class="btn-whatsapp" onclick="bukaAturan()">
+                            <i class="fa-solid fa-cart-shopping"></i> KIRIM ORDERAN
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 
-    Modal Aturan (Gaya Bottom Sheet Mobile)
-    <!-- <div class="modal-overlay" id="modalAturan"> -->
-        <!-- <div class="modal-box"> -->
-            <!-- <button class="btn-close-modal" onclick="tutupAturan()">&times;</button> -->
-            <!-- <h2>Aturan Pembelian</h2> -->
-            <!-- <ul class="rules-list"> -->
-                <!-- <li> -->
-                    <!-- <i class="fa-solid fa-circle-check"></i> -->
-                    <!-- <span><b>Kirim Bahan Jelas:</b> Siapkan materi video, lagu, dan konsep sebelum chat admin.</span> -->
-                <!-- </li> -->
-                <!-- <li> -->
-                    <!-- <i class="fa-solid fa-circle-check"></i> -->
-                    <!-- <span><b>Sistem Pembayaran:</b> Pembayaran di awal via E-Wallet (Dana/Ovo/Gopay).</span> -->
-                <!-- </li> -->
-                <!-- <li> -->
-                    <!-- <i class="fa-solid fa-circle-check"></i> -->
-                    <!-- <span><b>Batas Maksimal Revisi:</b> Jatah maksimal 2x revisi minor setelah video selesai.</span> -->
-                <!-- </li> -->
-                <!-- <li> -->
-                    <!-- <i class="fa-solid fa-circle-check"></i> -->
-                    <!-- <span><b>Waktu Pengerjaan:</b> Estimasi pengerjaan kilat 1-24 jam sesuai antrean.</span> -->
-                <!-- </li> -->
-                <!-- <li> -->
-                    <!-- <i class="fa-solid fa-circle-check"></i> -->
-                    <!-- <span><b>No Refund & Cancel:</b> Pesanan diproses tidak dapat dibatalkan/dikembalikan.</span> -->
-                <!-- </li> -->
-            <!-- </ul> -->
-            <!-- <button class="btn-modal-order" onclick="gasOrder()"> -->
-                <!-- <i class="fa-brands fa-whatsapp"></i> Setuju & Pesan Sekarang -->
-            <!-- </button> -->
-        <!-- </div> -->
-    <!-- </div> -->
+    <!-- Modal Aturan (Gaya Bottom Sheet Mobile) -->
+    <div class="modal-overlay" id="modalAturan">
+        <div class="modal-box">
+            <button class="btn-close-modal" onclick="tutupAturan()">&times;</button>
+            <h2>Aturan Pembelian</h2>
+            <ul class="rules-list">
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><b>Kirim Bahan Jelas:</b> Siapkan materi video, lagu, dan konsep sebelum chat admin.</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><b>Sistem Pembayaran:</b> Pembayaran di awal via E-Wallet (Dana/Ovo/Gopay).</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><b>Batas Maksimal Revisi:</b> Jatah maksimal 2x revisi minor setelah video selesai.</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><b>Waktu Pengerjaan:</b> Estimasi pengerjaan kilat 1-24 jam sesuai antrean.</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span><b>No Refund & Cancel:</b> Pesanan diproses tidak dapat dibatalkan/dikembalikan.</span>
+                </li>
+            </ul>
+            <button class="btn-modal-order" onclick="gasOrder()">
+                <i class="fa-brands fa-whatsapp"></i> Setuju & Pesan Sekarang
+            </button>
+        </div>
+    </div>
 
-    AOS (Animate On Scroll) JavaScript Library
-    <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
-    <!-- <script> -->
-        <!-- AOS.init({ -->
-            <!-- once: true, -->
-            <!-- easing: 'ease-out-quad' -->
-        <!-- }); -->
+    <!-- AOS (Animate On Scroll) JavaScript Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            easing: 'ease-out-quad'
+        });
 
-        <!-- const WHATSAPP_NUMBER = "6281398098107"; -->
-        <!-- let total = 0, deskripsi = "", mode = "", customQty = 0; -->
+        const WHATSAPP_NUMBER = "6281398098107";
+        let total = 0, deskripsi = "", mode = "", customQty = 0;
 
-        <!-- function pilihItem(element, nama, harga, tipe) { -->
-            <!-- document.getElementById('input-custom').value = ""; -->
-            <!-- document.querySelectorAll('.item-card').forEach(card => card.classList.remove('active')); -->
-            <!-- element.classList.add('active'); -->
+        function pilihItem(element, nama, harga, tipe) {
+            document.getElementById('input-custom').value = "";
+            document.querySelectorAll('.item-card').forEach(card => card.classList.remove('active'));
+            element.classList.add('active');
             
-            <!-- mode = tipe; total = harga; deskripsi = nama; -->
-            <!-- updateUI(); -->
-        <!-- } -->
+            mode = tipe; total = harga; deskripsi = nama;
+            updateUI();
+        }
 
-        <!-- function hitungCustom() { -->
-            <!-- let val = document.getElementById('input-custom').value; -->
-            <!-- document.querySelectorAll('.item-card').forEach(card => card.classList.remove('active')); -->
+        function hitungCustom() {
+            let val = document.getElementById('input-custom').value;
+            document.querySelectorAll('.item-card').forEach(card => card.classList.remove('active'));
 
-            <!-- if(val > 0) { -->
-                <!-- mode = "custom"; customQty = val; total = val * 1000; deskripsi = val + " Video Custom"; -->
-            <!-- } else { -->
-                <!-- total = 0; deskripsi = "Belum ada"; mode = ""; -->
-            <!-- } -->
-            <!-- updateUI(); -->
-        <!-- } -->
+            if(val > 0) {
+                mode = "custom"; customQty = val; total = val * 1000; deskripsi = val + " Video Custom";
+            } else {
+                total = 0; deskripsi = "Belum ada"; mode = "";
+            }
+            updateUI();
+        }
 
-        <!-- function updateUI() { -->
-            <!-- document.getElementById('label-pilihan').innerText = "Pilihan: " + deskripsi; -->
-            <!-- document.getElementById('grand-total').innerText = "Rp " + total.toLocaleString('id-ID'); -->
-        <!-- } -->
+        function updateUI() {
+            document.getElementById('label-pilihan').innerText = "Pilihan: " + deskripsi;
+            document.getElementById('grand-total').innerText = "Rp " + total.toLocaleString('id-ID');
+        }
 
-        <!-- function bukaAturan() { -->
-            <!-- if (total === 0) {  -->
-                <!-- alert("Pilih paket dulu bro!");  -->
-                <!-- return;  -->
-            <!-- } -->
-            <!-- document.getElementById('modalAturan').classList.add('show'); -->
-            <!-- document.body.style.overflow = "hidden"; -->
-        <!-- } -->
+        function bukaAturan() {
+            if (total === 0) { 
+                alert("Pilih paket dulu bro!"); 
+                return; 
+            }
+            document.getElementById('modalAturan').classList.add('show');
+            document.body.style.overflow = "hidden";
+        }
 
-        <!-- function tutupAturan() { -->
-            <!-- document.getElementById('modalAturan').classList.remove('show'); -->
-            <!-- document.body.style.overflow = "auto"; -->
-        <!-- } -->
+        function tutupAturan() {
+            document.getElementById('modalAturan').classList.remove('show');
+            document.body.style.overflow = "auto";
+        }
 
-        <!-- function gasOrder() { -->
-            <!-- tutupAturan(); -->
-            <!-- let message = mode === "custom"  -->
-                <!-- ? `Hai admin, saya ingin pesan ${customQty} video seharga ${total/1000}k via website.`  -->
-                <!-- : `Halo Admin REZZ STORE, saya mau pesan ${deskripsi} seharga Rp ${total.toLocaleString('id-ID')}`; -->
-            <!-- window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank'); -->
-        <!-- } -->
-    <!-- </script> -->
-<!-- </body> -->
-<!-- </html>
+        function gasOrder() {
+            tutupAturan();
+            let message = mode === "custom" 
+                ? `Hai admin, saya ingin pesan ${customQty} video seharga ${total/1000}k via website.` 
+                : `Halo Admin REZZ STORE, saya mau pesan ${deskripsi} seharga Rp ${total.toLocaleString('id-ID')}`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
