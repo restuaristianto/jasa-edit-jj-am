@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REZZ STORE - Professional AM Editor</title>
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- AOS Animation Library CDN -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -39,61 +43,62 @@
             background: linear-gradient(135deg, #00d285 0%, #10b981 100%);
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.4;
-            animation: pulse 10s infinite alternate;
+            opacity: 0.35;
+            animation: pulse 12s infinite alternate ease-in-out;
         }
 
         .blob-1 {
-            width: 400px;
-            height: 400px;
+            width: min(45vw, 500px);
+            height: min(45vw, 500px);
             top: -10%;
             left: -10%;
             background: linear-gradient(135deg, #d4fc79 0%, #00d285 100%);
         }
 
         .blob-2 {
-            width: 500px;
-            height: 500px;
+            width: min(50vw, 600px);
+            height: min(50vw, 600px);
             bottom: -10%;
             right: -10%;
             background: linear-gradient(135deg, #059669 0%, #34d399 100%);
         }
 
         .blob-3 {
-            width: 300px;
-            height: 300px;
-            top: 40%;
+            width: min(35vw, 350px);
+            height: min(35vw, 350px);
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: #10b981;
-            opacity: 0.2;
+            opacity: 0.15;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1) translate(0px, 0px); }
-            100% { transform: scale(1.2) translate(30px, -50px); }
+            0% { transform: scale(1) translate(0px, 0px) rotate(0deg); }
+            100% { transform: scale(1.15) translate(20px, -30px) rotate(15deg); }
         }
 
         /* --- ULTRA LIQUID GLASSMORPHISM --- */
         .glass {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(25px) saturate(180%);
             -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 
                         inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 10%;
+            padding: 40px 24px;
         }
 
         .logo-container {
@@ -107,9 +112,9 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 25px;
-            box-shadow: 0 15px 35px rgba(0, 210, 133, 0.2),
+            box-shadow: 0 15px 35px rgba(0, 210, 133, 0.25),
                         inset 0 1px 1px rgba(255, 255, 255, 0.3);
-            animation: float 4s ease-in-out infinite;
+            animation: float 5s ease-in-out infinite;
         }
 
         .logo-container svg {
@@ -118,11 +123,11 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(3deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
         }
 
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: clamp(2.8rem, 6vw, 4.5rem); /* Responsive typography otomatis */
             font-weight: 800;
             letter-spacing: -1px;
             margin-bottom: 15px;
@@ -133,7 +138,7 @@
         }
 
         .hero p {
-            font-size: 1.15rem;
+            font-size: clamp(1rem, 2vw, 1.15rem);
             max-width: 650px;
             line-height: 1.7;
             margin-bottom: 35px;
@@ -151,6 +156,8 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 10px 30px rgba(0, 210, 133, 0.3);
             border: 1px solid rgba(255,255,255,0.2);
+            display: inline-flex;
+            align-items: center;
         }
 
         .btn-scroll:hover {
@@ -161,16 +168,16 @@
 
         /* --- MAIN CONTENT --- */
         .main-content {
-            padding: 100px 5%;
+            padding: 80px 24px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 4vw, 2.8rem);
             font-weight: 800;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             background: linear-gradient(135deg, #ffffff 0%, #6ee7b7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -178,12 +185,12 @@
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
         .category-box {
-            padding: 35px;
+            padding: 30px;
         }
 
         .category-box h2 {
@@ -191,7 +198,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: #fff;
             font-weight: 700;
         }
@@ -203,47 +210,54 @@
 
         /* Menu Item Card Liquid Style */
         .item-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 20px;
-            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 18px 20px;
+            border-radius: 18px;
+            margin-bottom: 16px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.04);
         }
 
         .item-card:hover {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.02);
+            transform: translateX(4px); /* Animasi smooth bergeser sedikit ke kanan */
         }
 
         /* State Terpilih */
         .item-card.active {
-            background: rgba(0, 210, 133, 0.15);
+            background: rgba(0, 210, 133, 0.12);
             border-color: #00d285;
-            box-shadow: 0 0 20px rgba(0, 210, 133, 0.2),
-                        inset 0 1px 10px rgba(0, 210, 133, 0.2);
+            box-shadow: 0 0 20px rgba(0, 210, 133, 0.15),
+                        inset 0 1px 10px rgba(0, 210, 133, 0.15);
         }
 
-        .item-info h4 { font-size: 1.15rem; font-weight: 700; color: #fff; }
-        .item-info p { font-size: 0.9rem; color: #94a3b8; margin-top: 4px; }
+        .item-info h4 { font-size: 1.1rem; font-weight: 700; color: #fff; }
+        .item-info p { font-size: 0.85rem; color: #94a3b8; margin-top: 4px; }
+        
         .price-tag { 
             font-weight: 800; 
             color: #34d399; 
-            font-size: 1.2rem;
-            background: rgba(52, 211, 153, 0.1);
+            font-size: 1.15rem;
+            background: rgba(52, 211, 153, 0.08);
             padding: 6px 14px;
             border-radius: 12px;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .item-card.active .price-tag {
+            background: #00d285;
+            color: #042f1a;
         }
 
         /* Custom & Total Section */
         .order-summary {
-            margin-top: 60px;
-            padding: 45px;
+            margin-top: 40px;
+            padding: 35px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
@@ -256,35 +270,38 @@
             gap: 12px;
         }
 
-        .custom-input-group label { font-weight: 600; color: #e2e8f0; }
+        .custom-input-group label { font-weight: 600; color: #e2e8f0; font-size: 0.95rem;}
 
         .custom-input-group input {
             padding: 16px;
-            border-radius: 18px;
+            border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.25);
             font-size: 1.1rem;
             color: #fff;
             outline: none;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .custom-input-group input:focus {
             border-color: #00d285;
             box-shadow: 0 0 15px rgba(0, 210, 133, 0.2);
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .total-box {
             text-align: right;
         }
 
-        .total-box h3 { font-size: 1.1rem; color: #94a3b8; font-weight: 400; }
+        .total-box h3 { font-size: 1rem; color: #94a3b8; font-weight: 400; }
+        
         .total-box .grand-total { 
-            font-size: 3.5rem; 
+            font-size: clamp(2.2rem, 5vw, 3.5rem); 
             font-weight: 800; 
             color: #00d285; 
             margin: 5px 0;
             text-shadow: 0 0 20px rgba(0, 210, 133, 0.3);
+            transition: all 0.3s ease;
         }
 
         .btn-whatsapp {
@@ -292,13 +309,13 @@
             color: #042f1a;
             border: none;
             padding: 18px 40px;
-            border-radius: 18px;
-            font-size: 1.2rem;
+            border-radius: 16px;
+            font-size: 1.15rem;
             font-weight: 800;
             cursor: pointer;
             width: 100%;
-            margin-top: 20px;
-            transition: 0.3s;
+            margin-top: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 10px 25px rgba(0, 210, 133, 0.2);
             display: flex;
             justify-content: center;
@@ -320,13 +337,14 @@
             height: 100%;
             background: rgba(4, 15, 11, 0.85);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             z-index: 999;
             display: flex;
             justify-content: center;
             align-items: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 20px;
         }
 
@@ -337,19 +355,21 @@
 
         .modal-box {
             width: 100%;
-            max-width: 550px;
-            padding: 40px;
+            max-width: 520px;
+            padding: 35px;
             position: relative;
-            transform: scale(0.8);
+            transform: translateY(30px) scale(0.95);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-overlay.show .modal-box {
-            transform: scale(1);
+            transform: translateY(0) scale(1);
         }
 
         .modal-box h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 25px;
             color: #fff;
             text-align: center;
@@ -361,23 +381,23 @@
 
         .rules-list {
             list-style: none;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .rules-list li {
-            font-size: 1.05rem;
+            font-size: 0.98rem;
             line-height: 1.6;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             color: #cbd5e1;
             display: flex;
-            gap: 15px;
+            gap: 12px;
             align-items: flex-start;
         }
 
         .rules-list li i {
             color: #00d285;
             margin-top: 4px;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .btn-modal-order {
@@ -386,7 +406,7 @@
             border: none;
             padding: 16px 30px;
             border-radius: 16px;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 800;
             cursor: pointer;
             width: 100%;
@@ -395,7 +415,7 @@
             align-items: center;
             gap: 12px;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .btn-modal-order:hover {
@@ -405,25 +425,44 @@
 
         .btn-close-modal {
             position: absolute;
-            top: 20px;
-            right: 25px;
+            top: 15px;
+            right: 20px;
             background: transparent;
             border: none;
             color: #94a3b8;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             cursor: pointer;
-            transition: 0.2s;
+            transition: color 0.2s;
         }
 
-        .btn-close-modal:hover {
-            color: #fff;
+        .btn-close-modal:hover { color: #fff; }
+
+        /* --- RESPONSIVE LAYOUT BREAKPOINTS --- */
+        @media (max-width: 992px) {
+            .order-summary {
+                gap: 25px;
+                padding: 30px;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .order-summary { grid-template-columns: 1fr; gap: 30px; padding: 30px; }
+            .main-content { padding: 60px 16px; }
+            .category-box { padding: 24px; }
+            .order-summary { 
+                grid-template-columns: 1fr; 
+                gap: 30px; 
+                padding: 24px; 
+            }
             .total-box { text-align: left; }
             .modal-box { padding: 30px 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 20px 16px; }
+            .logo-container { width: 90px; height: 90px; border-radius: 24px; }
+            .logo-container svg { width: 50px; height: 50px; }
+            .item-card { padding: 16px; }
+            .price-tag { font-size: 1rem; padding: 4px 10px; }
         }
     </style>
 </head>
@@ -435,24 +474,29 @@
         <div class="blob blob-3"></div>
     </div>
 
+    <!-- Hero Section dengan animasi fade-up -->
     <section class="hero">
-        <div class="logo-container">
+        <div class="logo-container" data-aos="zoom-in" data-aos-duration="1000">
             <svg width="65" height="65" viewBox="0 0 24 24" fill="#00d285">
                 <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6Z"/>
             </svg>
         </div>
-        <h1>REZZ STORE</h1>
-        <p>
+        <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">REZZ STORE</h1>
+        <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
             Penyedia jasa editing video Alight Motion (AM) profesional. Spesialisasi pembuatan video <b>Jedag-Jedug (JJ)</b> dengan transisi super fluid, efek premium, dan pengerjaan kilat.
         </p>
-        <a href="#menu" class="btn-scroll">Explore Pricelist & Order</a>
+        <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+            <a href="#menu" class="btn-scroll">Explore Pricelist & Order</a>
+        </div>
     </section>
 
+    <!-- Main Content Grid -->
     <section id="menu" class="main-content">
-        <h2 class="section-title">Pilih Paket Editing</h2>
+        <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">Pilih Paket Editing</h2>
 
         <div class="menu-grid">
-            <div class="category-box glass">
+            <!-- Paket Hemat -->
+            <div class="category-box glass" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
                 <h2><i class="fa-solid fa-box-open"></i> Paket Hemat</h2>
                 <div class="item-card" onclick="pilihItem(this, 'Paket 10 Video', 8000, 'paket')">
                     <div class="item-info">
@@ -477,7 +521,8 @@
                 </div>
             </div>
 
-            <div class="category-box glass">
+            <!-- Membership -->
+            <div class="category-box glass" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
                 <h2><i class="fa-solid fa-crown"></i> Membership</h2>
                 <div class="item-card" onclick="pilihItem(this, 'VIP Member', 5000, 'member')">
                     <div class="item-info">
@@ -496,7 +541,8 @@
             </div>
         </div>
 
-        <div class="order-summary glass">
+        <!-- Order Summary Box -->
+        <div class="order-summary glass" data-aos="fade-up" data-aos-duration="800">
             <div class="custom-input-group">
                 <label for="input-custom">Mau Custom Jumlah? (1 video = 1k)</label>
                 <input type="number" id="input-custom" placeholder="Contoh: 7" oninput="hitungCustom()">
@@ -513,6 +559,7 @@
         </div>
     </section>
 
+    <!-- Modal Aturan -->
     <div class="modal-overlay" id="modalAturan">
         <div class="modal-box glass">
             <button class="btn-close-modal" onclick="tutupAturan()">&times;</button>
@@ -545,7 +592,15 @@
         </div>
     </div>
 
+    <!-- AOS (Animate On Scroll) JavaScript Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Inisialisasi library animasi smooth saat scroll
+        AOS.init({
+            once: true, // Animasi hanya berjalan sekali saat di-scroll
+            easing: 'ease-out-cubic'
+        });
+
         const WHATSAPP_NUMBER = "6281398098107";
         let total = 0, deskripsi = "", mode = "", customQty = 0;
 
@@ -582,14 +637,16 @@
                 return; 
             }
             document.getElementById('modalAturan').classList.add('show');
+            document.body.style.overflow = "hidden"; // Menghindari scrolling di belakang modal
         }
 
         function tutupAturan() {
             document.getElementById('modalAturan').classList.remove('show');
+            document.body.style.overflow = "auto";
         }
 
         function gasOrder() {
-            tutupAturan(); // Tutup pop-up sebelum beralih ke WA
+            tutupAturan();
             let message = mode === "custom" 
                 ? `Hai admin, saya ingin pesan ${customQty} video seharga ${total/1000}k via website.` 
                 : `Halo Admin REZZ STORE, saya mau pesan ${deskripsi} seharga Rp ${total.toLocaleString('id-ID')}`;
