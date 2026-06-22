@@ -33,9 +33,36 @@
             min-height: 100vh;
             color: var(--text-main);
             display: flex;
-            justify-content: center;
+            justify-content: center; 
             align-items: flex-start;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- BACKGROUND TECH GRID --- */
+        .tech-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(rgba(0, 255, 157, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 157, 0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: center center;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .tech-grid::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 20%, #020705 80%);
         }
 
         /* Container Utama HP */
@@ -43,13 +70,14 @@
             width: 100%;
             max-width: 450px;
             min-height: 100vh;
-            background: linear-gradient(180deg, #061510 0%, #030a07 100%);
+            background: linear-gradient(180deg, rgba(6, 21, 16, 0.95) 0%, rgba(3, 10, 7, 0.98) 100%);
             position: relative;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
-            padding-bottom: 30px;
+            box-shadow: 0 0 60px rgba(0, 255, 157, 0.08), 0 0 100px rgba(0, 0, 0, 0.9);
+            padding-bottom: 40px;
+            z-index: 1;
         }
 
-        /* Ambient Light Background Ringan (Tanpa Blur Berat) */
+        /* Ambient Light Background */
         .ambient-glow {
             position: absolute;
             width: 250px;
@@ -74,10 +102,10 @@
 
         .content-wrapper {
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
-        /* --- UI GLASS CONFIG --- */
+        /* UI GLASS CONFIG */
         .glass {
             background: var(--bg-card);
             backdrop-filter: blur(12px);
@@ -88,7 +116,7 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 90vh;
+            height: 95vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -131,35 +159,58 @@
             line-height: 1.6;
             margin-bottom: 32px;
             color: #cbd5e1;
-            font-weight: 400;
         }
 
-        .hero b {
-            color: var(--primary);
-            font-weight: 600;
+        .hero b { color: var(--primary); font-weight: 600; }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        @keyframes jedagJedugPulse {
+            0%, 100% { box-shadow: 0 8px 24px rgba(0, 255, 157, 0.25); transform: scale(1); }
+            50% { box-shadow: 0 0 30px rgba(0, 255, 157, 0.5); transform: scale(1.03); }
         }
 
         .btn-primary {
-            padding: 16px 36px;
+            padding: 16px;
             background: var(--primary);
             color: #020705;
             text-decoration: none;
             border-radius: 14px;
             font-weight: 700;
             font-size: 0.95rem;
-            box-shadow: 0 8px 24px rgba(0, 255, 157, 0.25);
-            transition: all 0.2s ease;
+            animation: jedagJedugPulse 2.5s infinite ease-in-out;
+            transition: all 0.2s;
         }
 
-        .btn-primary:active {
-            transform: scale(0.96);
-            box-shadow: 0 4px 12px rgba(0, 255, 157, 0.15);
+        /* --- TOMBOL PORTFOLIO BARU --- */
+        .btn-secondary {
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:active {
+            background: rgba(255, 255, 255, 0.08);
         }
 
         /* --- MAIN CONTENT --- */
-        .main-content {
-            padding: 20px 16px;
-        }
+        .main-content { padding: 20px 16px; }
 
         .section-title {
             font-size: 1.5rem;
@@ -169,19 +220,10 @@
             letter-spacing: -0.3px;
         }
 
-        .section-title span {
-            color: var(--primary);
-        }
+        .section-title span { color: var(--primary); }
 
-        .panel-group {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .category-box {
-            padding: 20px;
-        }
+        .panel-group { display: flex; flex-direction: column; gap: 20px; }
+        .category-box { padding: 20px; }
 
         .category-box h2 {
             margin-bottom: 16px;
@@ -190,12 +232,9 @@
             gap: 10px;
             font-size: 1.15rem;
             color: #fff;
-            font-weight: 700;
         }
 
-        .category-box h2 i {
-            color: var(--primary);
-        }
+        .category-box h2 i { color: var(--primary); }
 
         /* Item Card Style */
         .item-card {
@@ -208,230 +247,197 @@
             justify-content: space-between;
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
             transition: all 0.2s ease;
         }
 
-        .item-card:last-child {
-            margin-bottom: 0;
-        }
+        .item-card.popular-card { margin-top: 15px; border-color: rgba(0, 255, 157, 0.15); }
+        .item-card:last-child { margin-bottom: 0; }
+        .item-card:active { background: rgba(255, 255, 255, 0.04); }
 
-        .item-card:active {
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        /* Active State Card (Ketika Dipilih) */
         .item-card.active {
             background: rgba(0, 255, 157, 0.06);
             border-color: var(--primary);
             box-shadow: 0 0 15px rgba(0, 255, 157, 0.1);
         }
 
-        .item-info h4 { 
-            font-size: 1rem; 
-            font-weight: 600; 
-            color: #fff; 
-            transition: color 0.2s;
-        }
-        
-        .item-card.active .item-info h4 {
-            color: var(--primary);
+        .badge-populer {
+            position: absolute;
+            top: -12px;
+            left: 14px;
+            background: linear-gradient(135deg, #00ff9d 0%, #02b871 100%);
+            color: #020705;
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0, 255, 157, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
+        .item-info h4 { font-size: 1rem; font-weight: 600; color: #fff; }
+        .item-card.active .item-info h4 { color: var(--primary); }
         .item-info p { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
         
         .price-tag { 
-            font-weight: 700; 
-            color: var(--primary); 
-            font-size: 0.95rem;
-            background: rgba(0, 255, 157, 0.08);
-            padding: 4px 12px;
-            border-radius: 8px;
-            transition: all 0.2s;
+            font-weight: 700; color: var(--primary); font-size: 0.95rem;
+            background: rgba(0, 255, 157, 0.08); padding: 4px 12px; border-radius: 8px;
         }
         
-        .item-card.active .price-tag {
-            background: var(--primary);
-            color: #020705;
-        }
+        .item-card.active .price-tag { background: var(--primary); color: #020705; }
 
         /* --- SUMMARY PANEL --- */
-        .order-summary {
-            padding: 20px;
-        }
-
-        .custom-input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
+        .order-summary { padding: 20px; }
+        .custom-input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
         .custom-input-group label { font-weight: 600; color: #e2e8f0; font-size: 0.85rem; }
-
-        .custom-input-group input {
-            padding: 12px 14px;
-            border-radius: 12px;
-            border: 1px solid var(--border-glass);
-            background: rgba(0, 0, 0, 0.3);
-            font-size: 0.95rem;
-            color: #fff;
-            outline: none;
-            transition: 0.2s;
-        }
-
-        .custom-input-group input:focus {
-            border-color: var(--primary);
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .total-box {
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding-top: 14px;
-        }
-
-        .total-box h3 { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
         
-        .total-box .grand-total { 
-            font-size: 2.2rem; 
-            font-weight: 800; 
-            color: var(--primary); 
-            margin: 2px 0 12px 0;
+        .custom-input-group input {
+            padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-glass);
+            background: rgba(0, 0, 0, 0.3); font-size: 0.95rem; color: #fff; outline: none;
         }
+
+        .custom-input-group input:focus { border-color: var(--primary); background: rgba(0, 0, 0, 0.5); }
+        .total-box { border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 14px; }
+        .total-box h3 { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+        .total-box .grand-total { font-size: 2.2rem; font-weight: 800; color: var(--primary); margin: 2px 0 12px 0; }
 
         .btn-whatsapp {
-            background: var(--primary);
-            color: #020705;
-            border: none;
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 1rem;
+            background: var(--primary); color: #020705; border: none; padding: 15px;
+            border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+            box-shadow: 0 6px 20px rgba(0, 255, 157, 0.2); transition: all 0.2s;
+        }
+
+        .btn-whatsapp:active { transform: scale(0.97); }
+
+        /* --- FITUR BARU: SEKSI TESTIMONI (SLIDER) --- */
+        .testi-section {
+            margin-top: 25px;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .testi-section h3 {
+            font-size: 1.1rem;
             font-weight: 700;
-            cursor: pointer;
-            width: 100%;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .testi-container {
+            position: relative;
+            min-height: 100px;
+        }
+
+        .testi-card {
+            display: none;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-glass);
+            padding: 16px;
+            border-radius: 14px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .testi-card.active { display: block; }
+        .testi-stars { color: #facc15; font-size: 0.85rem; margin-bottom: 8px; }
+        .testi-text { font-size: 0.85rem; italic; color: #cbd5e1; line-height: 1.5; }
+        .testi-user { font-size: 0.78rem; color: var(--primary); font-weight: 600; margin-top: 8px; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- FITUR BARU: FOOTER PAYMENT METHOD --- */
+        .footer-payment {
+            margin-top: 30px;
+            text-align: center;
+            padding: 0 16px;
+        }
+
+        .footer-payment p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .payment-logos {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 6px 20px rgba(0, 255, 157, 0.2);
-            transition: all 0.2s;
+            gap: 15px;
+            opacity: 0.6;
         }
 
-        .btn-whatsapp:active {
-            transform: scale(0.97);
+        .payment-logos span {
+            font-size: 0.8rem;
+            font-weight: 800;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+            color: #fff;
         }
 
-        /* --- NATIVE LIGHTWEIGHT ANIMATION (FADE IN UP) --- */
+        /* ANIMATION REVEAL */
         .animate-reveal {
-            opacity: 0;
-            transform: translateY(20px);
+            opacity: 0; transform: translateY(20px);
             animation: revealUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        @keyframes revealUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
 
         /* --- BOTTOM SHEET MODAL --- */
         .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(2, 7, 5, 0.8);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s ease;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 7, 5, 0.8); backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px); z-index: 999;
+            display: flex; justify-content: center; align-items: flex-end;
+            opacity: 0; pointer-events: none; transition: opacity 0.25s;
         }
 
-        .modal-overlay.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .modal-overlay.show { opacity: 1; pointer-events: auto; }
 
         .modal-box {
-            width: 100%;
-            max-width: 450px;
-            padding: 24px 20px;
-            background: #05140f;
-            border-radius: 20px 20px 0 0;
-            border-top: 1px solid rgba(0, 255, 157, 0.15);
-            transform: translateY(100%);
-            transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
-            max-height: 80vh;
-            overflow-y: auto;
+            width: 100%; max-width: 450px; padding: 24px 20px; background: #05140f;
+            border-radius: 20px 20px 0 0; border-top: 1px solid rgba(0, 255, 157, 0.15);
+            transform: translateY(100%); transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+            max-height: 80vh; overflow-y: auto;
         }
 
-        .modal-overlay.show .modal-box {
-            transform: translateY(0);
-        }
-
-        .modal-box h2 {
-            font-size: 1.3rem;
-            margin-bottom: 16px;
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .rules-list {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
+        .modal-overlay.show .modal-box { transform: translateY(0); }
+        .modal-box h2 { font-size: 1.3rem; margin-bottom: 16px; color: #fff; }
+        .rules-list { list-style: none; margin-bottom: 20px; }
+        
         .rules-list li {
-            font-size: 0.88rem;
-            line-height: 1.5;
-            margin-bottom: 12px;
-            color: #cbd5e1;
-            display: flex;
-            gap: 10px;
+            font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;
+            color: #cbd5e1; display: flex; gap: 10px;
         }
 
-        .rules-list li i {
-            color: var(--primary);
-            margin-top: 3px;
-        }
-
+        .rules-list li i { color: var(--primary); margin-top: 3px; }
         .btn-modal-order {
-            background: #25d366;
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 700;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
+            background: #25d366; color: white; border: none; padding: 14px;
+            border-radius: 12px; font-size: 1rem; font-weight: 700; width: 100%;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
         }
 
         .btn-close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.5rem;
-            cursor: pointer;
+            position: absolute; top: 15px; right: 20px; background: transparent;
+            border: none; color: var(--text-muted); font-size: 1.5rem;
         }
     </style>
 </head>
 <body>
 
+    <div class="tech-grid"></div>
+
     <div class="mobile-container">
-        <!-- Layer ambient ringkas -->
         <div class="ambient-glow"></div>
         <div class="ambient-glow-2"></div>
 
@@ -447,44 +453,50 @@
                 <p class="animate-reveal" style="animation-delay: 0.2s;">
                     Jasa Editing Video Alight Motion Profesional. Spesialisasi video <b>Jedag-Jedug (JJ)</b> transisi fluid & efek premium pengerjaan kilat.
                 </p>
-                <div class="animate-reveal" style="animation-delay: 0.3s;">
+                <div class="hero-buttons animate-reveal" style="animation-delay: 0.3s;">
                     <a href="#menu" class="btn-primary">Mulai Order Sekarang</a>
-                </div>
-            </section>
+                </section>    
+                    
 
             <!-- Menu Content Section -->
             <section id="menu" class="main-content">
-                <h2 class="section-title animate-reveal" style="animation-delay: 0.1s;">Pilih <span>Paket Editing</span></h2>
+                <h2 class="section-title animate-reveal">Pilih <span>Paket Editing</span></h2>
 
                 <div class="panel-group">
                     <!-- Box Paket Hemat -->
-                    <div class="category-box glass animate-reveal" style="animation-delay: 0.2s;">
+                    <div class="category-box glass animate-reveal">
                         <h2><i class="fa-solid fa-bolt"></i> Paket Hemat</h2>
+                        
                         <div class="item-card" onclick="pilihItem(this, 'Paket 10 Video', 8000, 'paket')">
                             <div class="item-info">
                                 <h4>Paket 10 Video</h4>
-                                <p>Hemat Rp 2.000</p>
+                                <p>Diskon 20%</p>
                             </div>
                             <div class="price-tag">Rp 8k</div>
                         </div>
-                        <div class="item-card" onclick="pilihItem(this, 'Paket 20 Video', 15000, 'paket')">
+
+                        <div class="item-card popular-card" onclick="pilihItem(this, 'Paket 20 Video', 15000, 'paket')">
+                            <div class="badge-populer">
+                                <i class="fa-solid fa-fire"></i> Terlaris
+                            </div>
                             <div class="item-info">
                                 <h4>Paket 20 Video</h4>
-                                <p>Stok konten seminggu</p>
+                                <p>Diskon 25% + Best Value</p>
                             </div>
                             <div class="price-tag">Rp 15k</div>
                         </div>
+
                         <div class="item-card" onclick="pilihItem(this, 'Paket 50 Video', 35000, 'paket')">
                             <div class="item-info">
                                 <h4>Paket 50 Video</h4>
-                                <p>Paket Reseller / Sultan</p>
+                                <p>Diskon 30%</p>
                             </div>
                             <div class="price-tag">Rp 35k</div>
                         </div>
                     </div>
 
                     <!-- Box Membership -->
-                    <div class="category-box glass animate-reveal" style="animation-delay: 0.3s;">
+                    <div class="category-box glass animate-reveal">
                         <h2><i class="fa-solid fa-crown"></i> Membership</h2>
                         <div class="item-card" onclick="pilihItem(this, 'VIP Member', 5000, 'member')">
                             <div class="item-info">
@@ -494,6 +506,9 @@
                             <div class="price-tag">Rp 5k</div>
                         </div>
                         <div class="item-card" onclick="pilihItem(this, 'Pro Member VVIP', 20000, 'member')">
+						 <div class="badge-populer">
+						  <i class="fa-solid fa-fire"></i> Terlaris
+                            </div>
                             <div class="item-info">
                                 <h4>Pro Member VVIP</h4>
                                 <p>35 video/bulan + Efek Khusus VIP</p>
@@ -503,7 +518,7 @@
                     </div>
 
                     <!-- Summary Order Panel -->
-                    <div class="order-summary glass animate-reveal" style="animation-delay: 0.4s;">
+                    <div class="order-summary glass animate-reveal">
                         <div class="custom-input-group">
                             <label for="input-custom">Mau Custom Jumlah? (1 video = 1k)</label>
                             <input type="number" id="input-custom" placeholder="Contoh: 7" oninput="hitungCustom()">
@@ -517,6 +532,45 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- BARU: Ulasan/Testimoni Otomatis -->
+                    <div class="testi-section glass animate-reveal">
+                        <h3><i class="fa-solid fa-star" style="color: var(--primary);"></i> Kata Mereka</h3>
+                        <div class="testi-container">
+                            <div class="testi-card active">
+                                <div class="testi-stars">★★★★★</div>
+                                <div class="testi-text">"Gila JJ-nya pas banget sama beat lagunya, rapi, smooth pula videonya."</div>
+                                <div class="testi-user">@ryanz</div>
+                            </div>
+                            <div class="testi-card">
+                                <div class="testi-stars">★★★★★</div>
+                                <div class="testi-text">"Pesan paket 20 video ga nyampe sehari udah kelar semua. Bakal langganan sih ini."</div>
+                                <div class="testi-user">@Zexx</div>
+                            </div>
+                            <div class="testi-card">
+                                <div class="testi-stars">★★★★★</div>
+                                <div class="testi-text">"Preset premiumnya parah keren banget, transisinya smooth ga kaku."</div>
+                                <div class="testi-user">@alight_buyer</div>
+                            </div>
+							 <div class="testi-card">
+                                <div class="testi-stars">★★★★★</div>
+                                <div class="testi-text">"work it banget apalagi harganya murahnya banget cocok deh buat orang yang pengen jj am tapi gak ngerti cara editnya."</div>
+                                <div class="testi-user">@intan_putri</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BARU: Badge Pembayaran -->
+                    <div class="footer-payment animate-reveal">
+                        <p>Menerima Pembayaran</p>
+                        <div class="payment-logos">
+                            <span>DANA</span>
+                            <span>GOPAY</span>
+                            <span>OVO</span>
+                            <span>SPAY</span>
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </div>
@@ -528,26 +582,12 @@
             <button class="btn-close-modal" onclick="tutupAturan()">&times;</button>
             <h2>Aturan Pembelian</h2>
             <ul class="rules-list">
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <span><b>Kirim Bahan Jelas:</b> Siapkan materi video, lagu, dan konsep sebelum chat admin.</span>
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <span><b>Sistem Pembayaran:</b> Pembayaran di awal via E-Wallet (Dana/Ovo/Gopay).</span>
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <span><b>Batas Maksimal Revisi:</b> Jatah maksimal 2x revisi minor setelah video selesai.</span>
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <span><b>Waktu Pengerjaan:</b> Estimasi pengerjaan kilat 1-24 jam sesuai antrean.</span>
-                </li>
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    <span><b>No Refund:</b> Pesanan diproses tidak dapat dibatalkan atau direfund.</span>
-                </li>
+                <li><i class="fa-solid fa-check"></i><span><b>Kirim Bahan Jelas:</b> Siapkan Preset dan mentahan foto/video sebelum chat Admin (preset rusak wajib ganti).</span></li>
+                <li><i class="fa-solid fa-check"></i><span><b>Chat Admin:</b> Silahkan chat admin untuk transaksi lebih lanjut, Jika admin slow respon tunggu aja pasti dibales kok!.</span></li>
+                <li><i class="fa-solid fa-check"></i><span><b>Sistem Pembayaran:</b> Pembayaran di awal via E-Wallet (Dana).</span></li>
+                <li><i class="fa-solid fa-check"></i><span><b>Batas Maksimal Revisi:</b> Jatah maksimal 2x revisi minor setelah video selesai.</span></li>
+                <li><i class="fa-solid fa-check"></i><span><b>Waktu Pengerjaan:</b> Estimasi pengerjaan kilat 1-24 jam sesuai antrean.</span></li>
+                <li><i class="fa-solid fa-check"></i><span><b>No Refund:</b> Pesanan diproses tidak dapat dibatalkan atau direfund.</span></li>
             </ul>
             <button class="btn-modal-order" onclick="gasOrder()">
                 <i class="fa-brands fa-whatsapp"></i> Setuju & Pesan Sekarang
@@ -586,10 +626,7 @@
         }
 
         function bukaAturan() {
-            if (total === 0) { 
-                alert("Pilih paket dulu bro!"); 
-                return; 
-            }
+            if (total === 0) { alert("Pilih paket dulu bro!"); return; }
             document.getElementById('modalAturan').classList.add('show');
             document.body.style.overflow = "hidden";
         }
@@ -606,6 +643,15 @@
                 : `Halo Admin REZZ STORE, saya mau pesan ${deskripsi} seharga Rp ${total.toLocaleString('id-ID')}`;
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
         }
+
+        // JS BARU: Autoplay Slider Testimoni (Ganti teks setiap 3 detik)
+        let currentTesti = 0;
+        const testiCards = document.querySelectorAll('.testi-card');
+        setInterval(() => {
+            testiCards[currentTesti].classList.remove('active');
+            currentTesti = (currentTesti + 1) % testiCards.length;
+            testiCards[currentTesti].classList.add('active');
+        }, 3500);
     </script>
 </body>
 </html>
