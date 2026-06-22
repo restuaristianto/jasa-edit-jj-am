@@ -65,10 +65,11 @@
             background: radial-gradient(circle at center, transparent 20%, #020705 80%);
         }
 
-        /* Container Utama HP */
+        /* --- CONTAINER RESPONSIVE --- */
+        /* Berubah dari max-width 450px ke layout desktop otomatis jika layar lebar */
         .mobile-container {
             width: 100%;
-            max-width: 450px;
+            max-width: 1200px; /* Lebar maksimal desktop pc */
             min-height: 100vh;
             background: linear-gradient(180deg, rgba(6, 21, 16, 0.95) 0%, rgba(3, 10, 7, 0.98) 100%);
             position: relative;
@@ -80,22 +81,22 @@
         /* Ambient Light Background */
         .ambient-glow {
             position: absolute;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(0, 255, 157, 0.15) 0%, rgba(0,0,0,0) 70%);
-            top: -50px;
-            left: -50px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.12) 0%, rgba(0,0,0,0) 70%);
+            top: -100px;
+            left: -100px;
             pointer-events: none;
             z-index: 0;
         }
 
         .ambient-glow-2 {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(5, 150, 105, 0.1) 0%, rgba(0,0,0,0) 70%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(5, 150, 105, 0.08) 0%, rgba(0,0,0,0) 70%);
             bottom: 15%;
-            right: -100px;
+            right: -150px;
             pointer-events: none;
             z-index: 0;
         }
@@ -116,7 +117,7 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 95vh;
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -145,20 +146,21 @@
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             background: linear-gradient(135deg, #ffffff 30%, var(--primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             line-height: 1.6;
             margin-bottom: 32px;
             color: #cbd5e1;
+            max-width: 600px;
         }
 
         .hero b { color: var(--primary); font-weight: 600; }
@@ -184,53 +186,40 @@
             border-radius: 14px;
             font-weight: 700;
             font-size: 0.95rem;
+            text-align: center;
             animation: jedagJedugPulse 2.5s infinite ease-in-out;
             transition: all 0.2s;
         }
 
-        /* --- TOMBOL PORTFOLIO BARU --- */
-        .btn-secondary {
-            padding: 14px;
-            background: rgba(255, 255, 255, 0.03);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 14px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.2s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-secondary:active {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        /* --- MAIN CONTENT --- */
-        .main-content { padding: 20px 16px; }
+        /* --- MAIN CONTENT LAYOUT --- */
+        .main-content { padding: 40px 24px; }
 
         .section-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
             text-align: center;
             letter-spacing: -0.3px;
         }
 
         .section-title span { color: var(--primary); }
 
-        .panel-group { display: flex; flex-direction: column; gap: 20px; }
-        .category-box { padding: 20px; }
+        /* Menggunakan CSS Grid untuk Desktop & Stack Vertikal untuk Mobile */
+        .panel-layout { 
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .panel-group { display: flex; flex-direction: column; gap: 24px; }
+        .category-box { padding: 24px; }
 
         .category-box h2 {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             color: #fff;
         }
 
@@ -239,9 +228,9 @@
         /* Item Card Style */
         .item-card {
             background: rgba(255, 255, 255, 0.01);
-            padding: 14px 16px;
+            padding: 16px 20px;
             border-radius: 14px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -251,8 +240,9 @@
             transition: all 0.2s ease;
         }
 
-        .item-card.popular-card { margin-top: 15px; border-color: rgba(0, 255, 157, 0.15); }
+        .item-card.popular-card { margin-top: 18px; border-color: rgba(0, 255, 157, 0.15); }
         .item-card:last-child { margin-bottom: 0; }
+        .item-card:hover { border-color: rgba(0, 255, 157, 0.4); background: rgba(255, 255, 255, 0.02); }
         .item-card:active { background: rgba(255, 255, 255, 0.04); }
 
         .item-card.active {
@@ -278,74 +268,75 @@
             gap: 4px;
         }
 
-        .item-info h4 { font-size: 1rem; font-weight: 600; color: #fff; }
+        .item-info h4 { font-size: 1.05rem; font-weight: 600; color: #fff; }
         .item-card.active .item-info h4 { color: var(--primary); }
-        .item-info p { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+        .item-info p { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
         
         .price-tag { 
-            font-weight: 700; color: var(--primary); font-size: 0.95rem;
-            background: rgba(0, 255, 157, 0.08); padding: 4px 12px; border-radius: 8px;
+            font-weight: 700; color: var(--primary); font-size: 1rem;
+            background: rgba(0, 255, 157, 0.08); padding: 6px 14px; border-radius: 8px;
         }
         
         .item-card.active .price-tag { background: var(--primary); color: #020705; }
 
         /* --- SUMMARY PANEL --- */
-        .order-summary { padding: 20px; }
-        .custom-input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-        .custom-input-group label { font-weight: 600; color: #e2e8f0; font-size: 0.85rem; }
+        .order-summary { padding: 24px; height: fit-content; position: sticky; top: 24px; }
+        .custom-input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+        .custom-input-group label { font-weight: 600; color: #e2e8f0; font-size: 0.9rem; }
         
         .custom-input-group input {
-            padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-glass);
-            background: rgba(0, 0, 0, 0.3); font-size: 0.95rem; color: #fff; outline: none;
+            padding: 14px; border-radius: 12px; border: 1px solid var(--border-glass);
+            background: rgba(0, 0, 0, 0.3); font-size: 1rem; color: #fff; outline: none;
         }
 
         .custom-input-group input:focus { border-color: var(--primary); background: rgba(0, 0, 0, 0.5); }
-        .total-box { border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 14px; }
-        .total-box h3 { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
-        .total-box .grand-total { font-size: 2.2rem; font-weight: 800; color: var(--primary); margin: 2px 0 12px 0; }
+        .total-box { border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 16px; }
+        .total-box h3 { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
+        .total-box .grand-total { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 4px 0 16px 0; }
 
         .btn-whatsapp {
-            background: var(--primary); color: #020705; border: none; padding: 15px;
+            background: var(--primary); color: #020705; border: none; padding: 16px;
             border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%;
             display: flex; justify-content: center; align-items: center; gap: 8px;
             box-shadow: 0 6px 20px rgba(0, 255, 157, 0.2); transition: all 0.2s;
         }
 
+        .btn-whatsapp:hover { opacity: 0.9; }
         .btn-whatsapp:active { transform: scale(0.97); }
 
-        /* --- FITUR BARU: SEKSI TESTIMONI (SLIDER) --- */
+        /* --- FITUR BARU: SEKSI TESTIMONI --- */
         .testi-section {
-            margin-top: 25px;
-            padding: 20px;
+            margin-top: 12px;
+            padding: 24px;
             text-align: center;
             overflow: hidden;
         }
 
         .testi-section h3 {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             color: #fff;
         }
 
         .testi-container {
             position: relative;
-            min-height: 100px;
+            min-height: 110px;
         }
 
         .testi-card {
             display: none;
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--border-glass);
-            padding: 16px;
+            padding: 20px;
             border-radius: 14px;
             animation: fadeIn 0.5s ease-in-out;
         }
 
         .testi-card.active { display: block; }
-        .testi-stars { color: #facc15; font-size: 0.85rem; margin-bottom: 8px; }
-        .testi-text { font-size: 0.85rem; italic; color: #cbd5e1; line-height: 1.5; }
-        .testi-user { font-size: 0.78rem; color: var(--primary); font-weight: 600; margin-top: 8px; }
+        .testi-stars { color: #facc15; font-size: 0.9rem; margin-bottom: 8px; }
+        .testi-text { font-size: 0.9rem; font-style: italic; color: #cbd5e1; line-height: 1.6; }
+        .testi-user { font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-top: 10px; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(5px); }
@@ -354,33 +345,35 @@
 
         /* --- FITUR BARU: FOOTER PAYMENT METHOD --- */
         .footer-payment {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
             padding: 0 16px;
+            grid-column: 1 / -1; /* Mengisi baris penuh pada grid desktop */
         }
 
         .footer-payment p {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .payment-logos {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
             gap: 15px;
             opacity: 0.6;
         }
 
         .payment-logos span {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 800;
             background: rgba(255,255,255,0.05);
-            padding: 4px 10px;
-            border-radius: 6px;
+            padding: 6px 14px;
+            border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.05);
             color: #fff;
         }
@@ -393,7 +386,7 @@
 
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
 
-        /* --- BOTTOM SHEET MODAL --- */
+        /* --- BOTTOM SHEET & CENTER MODAL --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(2, 7, 5, 0.8); backdrop-filter: blur(8px);
@@ -405,31 +398,68 @@
         .modal-overlay.show { opacity: 1; pointer-events: auto; }
 
         .modal-box {
-            width: 100%; max-width: 450px; padding: 24px 20px; background: #05140f;
+            width: 100%; max-width: 500px; padding: 30px 24px; background: #05140f;
             border-radius: 20px 20px 0 0; border-top: 1px solid rgba(0, 255, 157, 0.15);
             transform: translateY(100%); transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
-            max-height: 80vh; overflow-y: auto;
+            max-height: 85vh; overflow-y: auto;
+            position: relative;
         }
 
         .modal-overlay.show .modal-box { transform: translateY(0); }
-        .modal-box h2 { font-size: 1.3rem; margin-bottom: 16px; color: #fff; }
-        .rules-list { list-style: none; margin-bottom: 20px; }
+        .modal-box h2 { font-size: 1.5rem; margin-bottom: 20px; color: #fff; }
+        .rules-list { list-style: none; margin-bottom: 24px; }
         
         .rules-list li {
-            font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;
-            color: #cbd5e1; display: flex; gap: 10px;
+            font-size: 0.95rem; line-height: 1.6; margin-bottom: 14px;
+            color: #cbd5e1; display: flex; gap: 12px;
         }
 
-        .rules-list li i { color: var(--primary); margin-top: 3px; }
+        .rules-list li i { color: var(--primary); margin-top: 4px; }
         .btn-modal-order {
-            background: #25d366; color: white; border: none; padding: 14px;
-            border-radius: 12px; font-size: 1rem; font-weight: 700; width: 100%;
+            background: #25d366; color: white; border: none; padding: 16px;
+            border-radius: 12px; font-size: 1rem; font-weight: 700; width: 100%; cursor: pointer;
             display: flex; justify-content: center; align-items: center; gap: 8px;
         }
 
         .btn-close-modal {
-            position: absolute; top: 15px; right: 20px; background: transparent;
-            border: none; color: var(--text-muted); font-size: 1.5rem;
+            position: absolute; top: 20px; right: 24px; background: transparent;
+            border: none; color: var(--text-muted); font-size: 1.8rem; cursor: pointer;
+        }
+
+        /* ==========================================================================
+           MEDIA QUERIES (UKURAN DESKTOP PC & LAPTOP)
+           ========================================================================== */
+        @media (min-width: 850px) {
+            body {
+                padding: 40px 20px; /* Memberikan space di luar mockup container di desktop */
+            }
+
+            .mobile-container {
+                border-radius: 24px; /* Membuat sudut membulat elegan di desktop */
+                border: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            /* Mengubah struktur konten utama menjadi 2 kolom (Kiri: Paket, Kanan: Pembayaran) */
+            .panel-layout {
+                grid-template-columns: 1.4fr 1fr;
+                align-items: start;
+            }
+
+            /* Membuat modal berada di tengah layar (bukan bottom sheet lagi) */
+            .modal-overlay {
+                align-items: center;
+            }
+
+            .modal-box {
+                border-radius: 20px;
+                border: 1px solid rgba(0, 255, 157, 0.3);
+                transform: scale(0.9) translateY(0);
+                transition: transform 0.25s ease;
+            }
+
+            .modal-overlay.show .modal-box {
+                transform: scale(1) translateY(0);
+            }
         }
     </style>
 </head>
@@ -455,112 +485,121 @@
                 </p>
                 <div class="hero-buttons animate-reveal" style="animation-delay: 0.3s;">
                     <a href="#menu" class="btn-primary">Mulai Order Sekarang</a>
-                </section>    
+                </div>
+            </section>    
                     
 
             <!-- Menu Content Section -->
             <section id="menu" class="main-content">
                 <h2 class="section-title animate-reveal">Pilih <span>Paket Editing</span></h2>
 
-                <div class="panel-group">
-                    <!-- Box Paket Hemat -->
-                    <div class="category-box glass animate-reveal">
-                        <h2><i class="fa-solid fa-bolt"></i> Paket Hemat</h2>
-                        
-                        <div class="item-card" onclick="pilihItem(this, 'Paket 10 Video', 8000, 'paket')">
-                            <div class="item-info">
-                                <h4>Paket 10 Video</h4>
-                                <p>Diskon 20%</p>
+                <!-- PANEL LAYOUT (Mengontrol Grid Desktop & Stack Mobile) -->
+                <div class="panel-layout">
+                    
+                    <!-- Kolom Kiri: Daftar Paket -->
+                    <div class="panel-group">
+                        <!-- Box Paket Hemat -->
+                        <div class="category-box glass animate-reveal">
+                            <h2><i class="fa-solid fa-bolt"></i> Paket Hemat</h2>
+                            
+                            <div class="item-card" onclick="pilihItem(this, 'Paket 10 Video', 8000, 'paket')">
+                                <div class="item-info">
+                                    <h4>Paket 10 Video</h4>
+                                    <p>Diskon 20%</p>
+                                </div>
+                                <div class="price-tag">Rp 8k</div>
                             </div>
-                            <div class="price-tag">Rp 8k</div>
+
+                            <div class="item-card popular-card" onclick="pilihItem(this, 'Paket 20 Video', 15000, 'paket')">
+                                <div class="badge-populer">
+                                    <i class="fa-solid fa-fire"></i> Terlaris
+                                </div>
+                                <div class="item-info">
+                                    <h4>Paket 20 Video</h4>
+                                    <p>Diskon 25% + Best Value</p>
+                                </div>
+                                <div class="price-tag">Rp 15k</div>
+                            </div>
+
+                            <div class="item-card" onclick="pilihItem(this, 'Paket 50 Video', 35000, 'paket')">
+                                <div class="item-info">
+                                    <h4>Paket 50 Video</h4>
+                                    <p>Diskon 30%</p>
+                                </div>
+                                <div class="price-tag">Rp 35k</div>
+                            </div>
                         </div>
 
-                        <div class="item-card popular-card" onclick="pilihItem(this, 'Paket 20 Video', 15000, 'paket')">
-                            <div class="badge-populer">
-                                <i class="fa-solid fa-fire"></i> Terlaris
+                        <!-- Box Membership -->
+                        <div class="category-box glass animate-reveal">
+                            <h2><i class="fa-solid fa-crown"></i> Membership</h2>
+                            <div class="item-card" onclick="pilihItem(this, 'VIP Member', 5000, 'member')">
+                                <div class="item-info">
+                                    <h4>VIP Member</h4>
+                                    <p>10 video/minggu + Akses Prioritas</p>
+                                </div>
+                                <div class="price-tag">Rp 5k</div>
                             </div>
-                            <div class="item-info">
-                                <h4>Paket 20 Video</h4>
-                                <p>Diskon 25% + Best Value</p>
-                            </div>
-                            <div class="price-tag">Rp 15k</div>
-                        </div>
-
-                        <div class="item-card" onclick="pilihItem(this, 'Paket 50 Video', 35000, 'paket')">
-                            <div class="item-info">
-                                <h4>Paket 50 Video</h4>
-                                <p>Diskon 30%</p>
-                            </div>
-                            <div class="price-tag">Rp 35k</div>
-                        </div>
-                    </div>
-
-                    <!-- Box Membership -->
-                    <div class="category-box glass animate-reveal">
-                        <h2><i class="fa-solid fa-crown"></i> Membership</h2>
-                        <div class="item-card" onclick="pilihItem(this, 'VIP Member', 5000, 'member')">
-                            <div class="item-info">
-                                <h4>VIP Member</h4>
-                                <p>10 video/minggu + Akses Prioritas</p>
-                            </div>
-                            <div class="price-tag">Rp 5k</div>
-                        </div>
-                        <div class="item-card" onclick="pilihItem(this, 'Pro Member VVIP', 20000, 'member')">
-						 <div class="badge-populer">
-						  <i class="fa-solid fa-fire"></i> Terlaris
-                            </div>
-                            <div class="item-info">
-                                <h4>Pro Member VVIP</h4>
-                                <p>35 video/bulan + Efek Khusus VIP</p>
-                            </div>
-                            <div class="price-tag">Rp 20k</div>
-                        </div>
-                    </div>
-
-                    <!-- Summary Order Panel -->
-                    <div class="order-summary glass animate-reveal">
-                        <div class="custom-input-group">
-                            <label for="input-custom">Mau Custom Jumlah? (1 video = 1k)</label>
-                            <input type="number" id="input-custom" placeholder="Contoh: 7" oninput="hitungCustom()">
-                        </div>
-                        
-                        <div class="total-box">
-                            <h3 id="label-pilihan">Pilihan: Belum ada</h3>
-                            <div class="grand-total" id="grand-total">Rp 0</div>
-                            <button class="btn-whatsapp" onclick="bukaAturan()">
-                                <i class="fa-solid fa-basket-shopping"></i> Kirim Orderan
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- BARU: Ulasan/Testimoni Otomatis -->
-                    <div class="testi-section glass animate-reveal">
-                        <h3><i class="fa-solid fa-star" style="color: var(--primary);"></i> Kata Mereka</h3>
-                        <div class="testi-container">
-                            <div class="testi-card active">
-                                <div class="testi-stars">★★★★★</div>
-                                <div class="testi-text">"Gila JJ-nya pas banget sama beat lagunya, rapi, smooth pula videonya."</div>
-                                <div class="testi-user">@ryanz</div>
-                            </div>
-                            <div class="testi-card">
-                                <div class="testi-stars">★★★★★</div>
-                                <div class="testi-text">"Pesan paket 20 video ga nyampe sehari udah kelar semua. Bakal langganan sih ini."</div>
-                                <div class="testi-user">@Zexx</div>
-                            </div>
-                            <div class="testi-card">
-                                <div class="testi-stars">★★★★★</div>
-                                <div class="testi-text">"Preset premiumnya parah keren banget, transisinya smooth ga kaku."</div>
-                                <div class="testi-user">@alight_buyer</div>
-                            </div>
-							 <div class="testi-card">
-                                <div class="testi-stars">★★★★★</div>
-                                <div class="testi-text">"work it banget apalagi harganya murahnya banget cocok deh buat orang yang pengen jj am tapi gak ngerti cara editnya."</div>
-                                <div class="testi-user">@intan_putri</div>
+                            <div class="item-card" onclick="pilihItem(this, 'Pro Member VVIP', 20000, 'member')">
+                                 <div class="badge-populer">
+                                  <i class="fa-solid fa-fire"></i> Terlaris
+                                </div>
+                                <div class="item-info">
+                                    <h4>Pro Member VVIP</h4>
+                                    <p>35 video/bulan + Efek Khusus VIP</p>
+                                </div>
+                                <div class="price-tag">Rp 20k</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- BARU: Badge Pembayaran -->
+                    <!-- Kolom Kanan: Summary Order & Testimoni -->
+                    <div class="panel-group">
+                        <!-- Summary Order Panel -->
+                        <div class="order-summary glass animate-reveal">
+                            <div class="custom-input-group">
+                                <label for="input-custom">Mau Custom Jumlah? (1 video = 1k)</label>
+                                <input type="number" id="input-custom" placeholder="Contoh: 7" oninput="hitungCustom()">
+                            </div>
+                            
+                            <div class="total-box">
+                                <h3 id="label-pilihan">Pilihan: Belum ada</h3>
+                                <div class="grand-total" id="grand-total">Rp 0</div>
+                                <button class="btn-whatsapp" onclick="bukaAturan()">
+                                    <i class="fa-solid fa-basket-shopping"></i> Kirim Orderan
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Ulasan/Testimoni Otomatis -->
+                        <div class="testi-section glass animate-reveal">
+                            <h3><i class="fa-solid fa-star" style="color: var(--primary);"></i> Kata Mereka</h3>
+                            <div class="testi-container">
+                                <div class="testi-card active">
+                                    <div class="testi-stars">★★★★★</div>
+                                    <div class="testi-text">"Gila JJ-nya pas banget sama beat lagunya, rapi, smooth pula videonya."</div>
+                                    <div class="testi-user">@ryanz</div>
+                                </div>
+                                <div class="testi-card">
+                                    <div class="testi-stars">★★★★★</div>
+                                    <div class="testi-text">"Pesan paket 20 video ga nyampe sehari udah kelar semua. Bakal langganan sih ini."</div>
+                                    <div class="testi-user">@Zexx</div>
+                                </div>
+                                <div class="testi-card">
+                                    <div class="testi-stars">★★★★★</div>
+                                    <div class="testi-text">"Preset premiumnya parah keren banget, transisinya smooth ga kaku."</div>
+                                    <div class="testi-user">@alight_buyer</div>
+                                </div>
+                                 <div class="testi-card">
+                                    <div class="testi-stars">★★★★★</div>
+                                    <div class="testi-text">"work it banget apalagi harganya murahnya banget cocok deh buat orang yang pengen jj am tapi gak ngerti cara editnya."</div>
+                                    <div class="testi-user">@intan_putri</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Badge Pembayaran (Full Width di bawah Grid) -->
                     <div class="footer-payment animate-reveal">
                         <p>Menerima Pembayaran</p>
                         <div class="payment-logos">
@@ -576,7 +615,7 @@
         </div>
     </div>
 
-    <!-- Modal Aturan Bottom Sheet -->
+    <!-- Modal Aturan Bottom Sheet / Center Pop-up -->
     <div class="modal-overlay" id="modalAturan">
         <div class="modal-box">
             <button class="btn-close-modal" onclick="tutupAturan()">&times;</button>
@@ -644,7 +683,7 @@
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
-        // JS BARU: Autoplay Slider Testimoni (Ganti teks setiap 3 detik)
+        // JS Autoplay Slider Testimoni (Ganti teks setiap 3.5 detik)
         let currentTesti = 0;
         const testiCards = document.querySelectorAll('.testi-card');
         setInterval(() => {
