@@ -164,7 +164,7 @@
 
         // Fungsi mengarahkan langsung chat manual konfirmasi orderan ke WhatsApp mu
         function prosesKeWhatsapp() {
-            const nomorWA = "628198098107"; // <--- GANTI JADI NOMOR WHATSAPP KAMU DIAWALI 62
+            const nomorWA = "6281398098107"; // <--- GANTI JADI NOMOR WHATSAPP KAMU DIAWALI 62
             const pesan = `Halo Bang Rezz, saya sudah melakukan pembayaran via QRIS.\n\n*Detail Orderan*:\n- Paket: ${namaPaket}\n- Total: Rp ${nominalTotal.toLocaleString('id-ID')}\n\nMohon segera diproses ya bang! Ini bukti transfernya:`;
             window.location.href = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
         }
