@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>REZZ STORE - Professional AM Editor</title>
+    <!-- Fonts & Icons Premium -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
-            --primary: #00ff9d; /* Hijau neon */
+            --primary: #00ff9d; /* Hijau muda premium neon */
             --primary-dark: #059669;
             --bg-dark: #040d0a;
             --bg-card: rgba(255, 255, 255, 0.03);
@@ -38,136 +39,398 @@
             position: relative;
         }
 
+        /* --- BACKGROUND TECH GRID --- */
         .tech-grid {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             background-image: 
                 linear-gradient(rgba(0, 255, 157, 0.02) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 157, 0.02) 1px, transparent 1px);
             background-size: 30px 30px;
+            background-position: center center;
             pointer-events: none;
             z-index: 0;
         }
 
         .tech-grid::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: radial-gradient(circle at center, transparent 20%, #020705 80%);
         }
 
+        /* Container Utama HP */
         .mobile-container {
-            width: 100%; max-width: 450px; min-height: 100vh;
+            width: 100%;
+            max-width: 450px;
+            min-height: 100vh;
             background: linear-gradient(180deg, rgba(6, 21, 16, 0.95) 0%, rgba(3, 10, 7, 0.98) 100%);
             position: relative;
             box-shadow: 0 0 60px rgba(0, 255, 157, 0.08), 0 0 100px rgba(0, 0, 0, 0.9);
-            padding-bottom: 40px; z-index: 1;
+            padding-bottom: 40px;
+            z-index: 1;
         }
 
-        .ambient-glow, .ambient-glow-2 {
-            position: absolute; width: 250px; height: 250px;
-            background: radial-gradient(circle, rgba(0, 255, 157, 0.12) 0%, rgba(0,0,0,0) 70%);
-            pointer-events: none; z-index: 0;
+        /* Ambient Light Background */
+        .ambient-glow {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: -50px;
+            left: -50px;
+            pointer-events: none;
+            z-index: 0;
         }
-        .ambient-glow { top: -50px; left: -50px; }
-        .ambient-glow-2 { bottom: 15%; right: -100px; }
 
-        .content-wrapper { position: relative; z-index: 2; }
-        .glass { background: var(--bg-card); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-glass); border-radius: 20px; }
+        .ambient-glow-2 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(5, 150, 105, 0.1) 0%, rgba(0,0,0,0) 70%);
+            bottom: 15%;
+            right: -100px;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-        /* HERO SECTION */
-        .hero { height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 24px; }
-        .logo-box { width: 90px; height: 90px; background: rgba(0, 255, 157, 0.03); border: 1px solid rgba(0, 255, 157, 0.2); border-radius: 24px; display: flex; justify-content: center; align-items: center; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0, 255, 157, 0.1); animation: float 4s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 12px; background: linear-gradient(135deg, #ffffff 30%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 32px; color: #cbd5e1; }
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* UI GLASS CONFIG */
+        .glass {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .logo-box {
+            width: 90px;
+            height: 90px;
+            background: rgba(0, 255, 157, 0.03);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            border-radius: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 255, 157, 0.1);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            color: #cbd5e1;
+        }
+
         .hero b { color: var(--primary); font-weight: 600; }
-        .btn-primary { display: block; text-align: center; width: 100%; max-width: 280px; padding: 16px; background: var(--primary); color: #020705; text-decoration: none; border-radius: 14px; font-weight: 700; font-size: 0.95rem; box-shadow: 0 8px 24px rgba(0, 255, 157, 0.25); transition: all 0.2s; }
 
-        /* MAIN CONTENT & ITEMS */
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        @keyframes jedagJedugPulse {
+            0%, 100% { box-shadow: 0 8px 24px rgba(0, 255, 157, 0.25); transform: scale(1); }
+            50% { box-shadow: 0 0 30px rgba(0, 255, 157, 0.5); transform: scale(1.03); }
+        }
+
+        .btn-primary {
+            padding: 16px;
+            background: var(--primary);
+            color: #020705;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            animation: jedagJedugPulse 2.5s infinite ease-in-out;
+            transition: all 0.2s;
+        }
+
+        /* --- TOMBOL PORTFOLIO BARU --- */
+        .btn-secondary {
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:active {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* --- MAIN CONTENT --- */
         .main-content { padding: 20px 16px; }
-        .section-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 24px; text-align: center; }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            text-align: center;
+            letter-spacing: -0.3px;
+        }
+
         .section-title span { color: var(--primary); }
+
         .panel-group { display: flex; flex-direction: column; gap: 20px; }
         .category-box { padding: 20px; }
-        .category-box h2 { margin-bottom: 16px; display: flex; align-items: center; gap: 10px; font-size: 1.15rem; color: #fff; }
+
+        .category-box h2 {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+            color: #fff;
+        }
+
         .category-box h2 i { color: var(--primary); }
 
-        .item-card { background: rgba(255, 255, 255, 0.01); padding: 14px 16px; border-radius: 14px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255, 255, 255, 0.03); position: relative; transition: all 0.2s; }
+        /* Item Card Style */
+        .item-card {
+            background: rgba(255, 255, 255, 0.01);
+            padding: 14px 16px;
+            border-radius: 14px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
         .item-card.popular-card { margin-top: 15px; border-color: rgba(0, 255, 157, 0.15); }
-        .item-card.active { background: rgba(0, 255, 157, 0.06); border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 255, 157, 0.1); }
-        .badge-populer { position: absolute; top: -12px; left: 14px; background: linear-gradient(135deg, #00ff9d 0%, #02b871 100%); color: #020705; font-size: 0.68rem; font-weight: 800; padding: 3px 10px; border-radius: 6px; text-transform: uppercase; }
+        .item-card:last-child { margin-bottom: 0; }
+        .item-card:active { background: rgba(255, 255, 255, 0.04); }
+
+        .item-card.active {
+            background: rgba(0, 255, 157, 0.06);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.1);
+        }
+
+        .badge-populer {
+            position: absolute;
+            top: -12px;
+            left: 14px;
+            background: linear-gradient(135deg, #00ff9d 0%, #02b871 100%);
+            color: #020705;
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0, 255, 157, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         .item-info h4 { font-size: 1rem; font-weight: 600; color: #fff; }
+        .item-card.active .item-info h4 { color: var(--primary); }
         .item-info p { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
-        .price-tag { font-weight: 700; color: var(--primary); font-size: 0.95rem; background: rgba(0, 255, 157, 0.08); padding: 4px 12px; border-radius: 8px; }
+        
+        .price-tag { 
+            font-weight: 700; color: var(--primary); font-size: 0.95rem;
+            background: rgba(0, 255, 157, 0.08); padding: 4px 12px; border-radius: 8px;
+        }
+        
         .item-card.active .price-tag { background: var(--primary); color: #020705; }
 
-        /* SUMMARY & ORDER BUTTON */
+        /* --- SUMMARY PANEL --- */
         .order-summary { padding: 20px; }
         .custom-input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
         .custom-input-group label { font-weight: 600; color: #e2e8f0; font-size: 0.85rem; }
-        .custom-input-group input { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-glass); background: rgba(0, 0, 0, 0.3); font-size: 0.95rem; color: #fff; outline: none; }
-        .custom-input-group input:focus { border-color: var(--primary); }
+        
+        .custom-input-group input {
+            padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-glass);
+            background: rgba(0, 0, 0, 0.3); font-size: 0.95rem; color: #fff; outline: none;
+        }
+
+        .custom-input-group input:focus { border-color: var(--primary); background: rgba(0, 0, 0, 0.5); }
         .total-box { border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 14px; }
         .total-box h3 { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
         .total-box .grand-total { font-size: 2.2rem; font-weight: 800; color: var(--primary); margin: 2px 0 12px 0; }
-        .btn-whatsapp { background: var(--primary); color: #020705; border: none; padding: 15px; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 6px 20px rgba(0, 255, 157, 0.2); }
 
-        /* TESTIMONI & PAYMENT FOOTER */
-        .testi-section { margin-top: 25px; padding: 20px; text-align: center; overflow: hidden; }
-        .testi-section h3 { font-size: 1.1rem; color: #fff; margin-bottom: 15px; }
-        .testi-container { position: relative; min-height: 100px; }
-        .testi-card { display: none; background: rgba(255, 255, 255, 0.01); border: 1px solid var(--border-glass); padding: 16px; border-radius: 14px; }
-        .testi-card.active { display: block; animation: fadeIn 0.5s ease; }
+        .btn-whatsapp {
+            background: var(--primary); color: #020705; border: none; padding: 15px;
+            border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+            box-shadow: 0 6px 20px rgba(0, 255, 157, 0.2); transition: all 0.2s;
+        }
+
+        .btn-whatsapp:active { transform: scale(0.97); }
+
+        /* --- FITUR BARU: SEKSI TESTIMONI (SLIDER) --- */
+        .testi-section {
+            margin-top: 25px;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .testi-section h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .testi-container {
+            position: relative;
+            min-height: 100px;
+        }
+
+        .testi-card {
+            display: none;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-glass);
+            padding: 16px;
+            border-radius: 14px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .testi-card.active { display: block; }
         .testi-stars { color: #facc15; font-size: 0.85rem; margin-bottom: 8px; }
-        .testi-text { font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; }
-        .testi-user { font-size: 0.78rem; color: var(--primary); margin-top: 8px; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        .footer-payment { margin-top: 30px; text-align: center; padding: 0 16px; }
-        .footer-payment p { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; }
-        .payment-logos { display: flex; justify-content: center; gap: 15px; opacity: 0.6; }
-        .payment-logos span { font-size: 0.8rem; font-weight: 800; background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 6px; color: #fff; }
+        .testi-text { font-size: 0.85rem; italic; color: #cbd5e1; line-height: 1.5; }
+        .testi-user { font-size: 0.78rem; color: var(--primary); font-weight: 600; margin-top: 8px; }
 
-        /* --- STYLING MODAL BOTTOM SHEET (PEMBAYARAN & REVISI) --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- FITUR BARU: FOOTER PAYMENT METHOD --- */
+        .footer-payment {
+            margin-top: 30px;
+            text-align: center;
+            padding: 0 16px;
+        }
+
+        .footer-payment p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .payment-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            opacity: 0.6;
+        }
+
+        .payment-logos span {
+            font-size: 0.8rem;
+            font-weight: 800;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+            color: #fff;
+        }
+
+        /* ANIMATION REVEAL */
+        .animate-reveal {
+            opacity: 0; transform: translateY(20px);
+            animation: revealUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* --- BOTTOM SHEET MODAL --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(2, 7, 5, 0.85); backdrop-filter: blur(8px);
+            background: rgba(2, 7, 5, 0.8); backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px); z-index: 999;
             display: flex; justify-content: center; align-items: flex-end;
             opacity: 0; pointer-events: none; transition: opacity 0.25s;
         }
+
         .modal-overlay.show { opacity: 1; pointer-events: auto; }
+
         .modal-box {
             width: 100%; max-width: 450px; padding: 24px 20px; background: #05140f;
-            border-radius: 20px 20px 0 0; border-top: 1px solid rgba(0, 255, 157, 0.2);
-            transform: translateY(100%); transition: transform 0.25s ease-out;
-            max-height: 90vh; overflow-y: auto; position: relative;
+            border-radius: 20px 20px 0 0; border-top: 1px solid rgba(0, 255, 157, 0.15);
+            transform: translateY(100%); transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+            max-height: 80vh; overflow-y: auto;
         }
+
         .modal-overlay.show .modal-box { transform: translateY(0); }
-        .btn-close-modal { position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+        .modal-box h2 { font-size: 1.3rem; margin-bottom: 16px; color: #fff; }
+        .rules-list { list-style: none; margin-bottom: 20px; }
         
-        .modal-box h2 { font-size: 1.3rem; margin-bottom: 10px; color: #fff; text-align: center; }
-        .modal-box .sub-modal { font-size: 0.85rem; color: #cbd5e1; text-align: center; margin-bottom: 20px; }
-        
-        /* QRIS Frame */
-        .qris-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
-        .qris-frame { width: 220px; height: 220px; background: #fff; border-radius: 12px; padding: 10px; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(0,255,157,0.1); }
-        .qris-frame img { width: 100%; height: 100%; object-fit: contain; }
-        
-        .btn-download-qris { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; padding: 8px 16px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 8px; color: #fff; font-size: 0.85rem; text-decoration: none; font-weight: 600; }
-        
-        .warning-text { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); padding: 12px; border-radius: 10px; color: #fca5a5; font-size: 0.82rem; line-height: 1.4; text-align: center; margin-bottom: 20px; }
-        .warning-text i { margin-right: 4px; color: #ef4444; }
+        .rules-list li {
+            font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;
+            color: #cbd5e1; display: flex; gap: 10px;
+        }
 
-        .btn-sudah-bayar { background: #25d366; color: #fff; border: none; padding: 14px; border-radius: 12px; font-size: 1rem; font-weight: 700; width: 100%; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+        .rules-list li i { color: var(--primary); margin-top: 3px; }
+        .btn-modal-order {
+            background: #25d366; color: white; border: none; padding: 14px;
+            border-radius: 12px; font-size: 1rem; font-weight: 700; width: 100%;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
 
-        /* Styling Kwitansi */
-        .receipt-box { background: #0c241b; border: 1px dashed var(--primary); padding: 18px; border-radius: 12px; margin-bottom: 20px; display: none; }
-        .receipt-title { text-align: center; font-weight: 800; font-size: 1rem; color: var(--primary); letter-spacing: 1px; margin-bottom: 12px; border-bottom: 1px dashed rgba(0,255,157,0.2); padding-bottom: 8px; }
-        .receipt-row { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; color: #cbd5e1; }
-        .receipt-row span:last-child { font-weight: 600; color: #fff; }
-        .receipt-status { text-align: center; background: rgba(0, 255, 157, 0.1); color: var(--primary); padding: 4px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; }
-
-        .animate-reveal { opacity: 0; transform: translateY(20px); animation: revealUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
+        .btn-close-modal {
+            position: absolute; top: 15px; right: 20px; background: transparent;
+            border: none; color: var(--text-muted); font-size: 1.5rem;
+        }
     </style>
 </head>
 <body>
@@ -179,6 +442,7 @@
         <div class="ambient-glow-2"></div>
 
         <div class="content-wrapper">
+            <!-- Hero Section -->
             <section class="hero">
                 <div class="logo-box animate-reveal">
                     <svg width="45" height="45" viewBox="0 0 24 24" fill="var(--primary)">
@@ -191,13 +455,15 @@
                 </p>
                 <div class="hero-buttons animate-reveal" style="animation-delay: 0.3s;">
                     <a href="#menu" class="btn-primary">Mulai Order Sekarang</a>
-                </div>
-            </section>    
+                </section>    
+                    
 
+            <!-- Menu Content Section -->
             <section id="menu" class="main-content">
                 <h2 class="section-title animate-reveal">Pilih <span>Paket Editing</span></h2>
 
                 <div class="panel-group">
+                    <!-- Box Paket Hemat -->
                     <div class="category-box glass animate-reveal">
                         <h2><i class="fa-solid fa-bolt"></i> Paket Hemat</h2>
                         
@@ -210,7 +476,9 @@
                         </div>
 
                         <div class="item-card popular-card" onclick="pilihItem(this, 'Paket 20 Video', 15000, 'paket')">
-                            <div class="badge-populer"><i class="fa-solid fa-fire"></i> Terlaris</div>
+                            <div class="badge-populer">
+                                <i class="fa-solid fa-fire"></i> Terlaris
+                            </div>
                             <div class="item-info">
                                 <h4>Paket 20 Video</h4>
                                 <p>Diskon 25% + Best Value</p>
@@ -227,6 +495,7 @@
                         </div>
                     </div>
 
+                    <!-- Box Membership -->
                     <div class="category-box glass animate-reveal">
                         <h2><i class="fa-solid fa-crown"></i> Membership</h2>
                         <div class="item-card" onclick="pilihItem(this, 'VIP Member', 5000, 'member')">
@@ -237,7 +506,9 @@
                             <div class="price-tag">Rp 5k</div>
                         </div>
                         <div class="item-card" onclick="pilihItem(this, 'Pro Member VVIP', 20000, 'member')">
-                            <div class="badge-populer"><i class="fa-solid fa-fire"></i> Terlaris</div>
+						 <div class="badge-populer">
+						  <i class="fa-solid fa-fire"></i> Terlaris
+                            </div>
                             <div class="item-info">
                                 <h4>Pro Member VVIP</h4>
                                 <p>35 video/bulan + Efek Khusus VIP</p>
@@ -246,6 +517,7 @@
                         </div>
                     </div>
 
+                    <!-- Summary Order Panel -->
                     <div class="order-summary glass animate-reveal">
                         <div class="custom-input-group">
                             <label for="input-custom">Mau Custom Jumlah? (1 video = 1k)</label>
@@ -255,12 +527,13 @@
                         <div class="total-box">
                             <h3 id="label-pilihan">Pilihan: Belum ada</h3>
                             <div class="grand-total" id="grand-total">Rp 0</div>
-                            <button class="btn-whatsapp" onclick="bukaPembayaran()">
+                            <button class="btn-whatsapp" onclick="bukaAturan()">
                                 <i class="fa-solid fa-basket-shopping"></i> Kirim Orderan
                             </button>
                         </div>
                     </div>
 
+                    <!-- BARU: Ulasan/Testimoni Otomatis -->
                     <div class="testi-section glass animate-reveal">
                         <h3><i class="fa-solid fa-star" style="color: var(--primary);"></i> Kata Mereka</h3>
                         <div class="testi-container">
@@ -279,12 +552,12 @@
                                 <div class="testi-text">"Preset premiumnya parah keren banget, smooth ga kaku."</div>
                                 <div class="testi-user">@alight_buyer</div>
                             </div>
-                            <div class="testi-card">
+							 <div class="testi-card">
                                 <div class="testi-stars">★★★★★</div>
                                 <div class="testi-text">"work it banget apalagi harganya murahnya banget cocok deh buat orang yang pengen jj am tapi gak ngerti cara editnya."</div>
                                 <div class="testi-user">@intan_putri</div>
                             </div>
-                            <div class="testi-card">
+							 <div class="testi-card">
                                 <div class="testi-stars">★★★★★</div>
                                 <div class="testi-text">"GG bang "</div>
                                 <div class="testi-user">@Gabut</div>
@@ -292,6 +565,7 @@
                         </div>
                     </div>
 
+                    <!-- BARU: Badge Pembayaran -->
                     <div class="footer-payment animate-reveal">
                         <p>Menerima Pembayaran</p>
                         <div class="payment-logos">
@@ -307,37 +581,21 @@
         </div>
     </div>
 
-    <div class="modal-overlay" id="modalPembayaran">
+    <!-- Modal Aturan Bottom Sheet -->
+    <div class="modal-overlay" id="modalAturan">
         <div class="modal-box">
-            <button class="btn-close-modal" onclick="tutupPembayaran()">&times;</button>
-            <h2 id="modal-header-title">Pembayaran QRIS</h2>
-            <p class="sub-modal" id="modal-header-sub">Silakan scan kode QRIS di bawah untuk membayar</p>
-            
-            <div class="qris-wrapper" id="qris-area">
-                <div class="qris-frame">
-                    <img src="qris.jpg" alt="QRIS REZZ STORE">
-                </div>
-                <a href="qris.jpg" download="qris-rezzstore.jpg" class="btn-download-qris">
-                    <i class="fa-solid fa-download"></i> Unduh Gambar QRIS
-                </a>
-            </div>
-
-            <div class="warning-text" id="warning-area">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <b>PENTING:</b> Jika transaksi sudah berhasil, kamu <b>WAJIB mengambil Screenshot (SS)</b> bukti transfernya sebagai validasi utama!
-            </div>
-
-            <div class="receipt-box" id="receipt-area">
-                <div class="receipt-title">KWITANSI DIGITAL</div>
-                <div class="receipt-row"><span>No. Invoice:</span><span id="rcp-invoice">-</span></div>
-                <div class="receipt-row"><span>Item Pesanan:</span><span id="rcp-paket">-</span></div>
-                <div class="receipt-row"><span>Total Bayar:</span><span id="rcp-total">-</span></div>
-                <div class="receipt-row"><span>Tanggal:</span><span id="rcp-date">-</span></div>
-                <div class="receipt-status">PROSES VALIDASI</div>
-            </div>
-
-            <button class="btn-sudah-bayar" id="btn-action-modal" onclick="prosesSudahBayar()">
-                <i class="fa-solid fa-circle-check"></i> Saya Sudah Bayar
+            <button class="btn-close-modal" onclick="tutupAturan()">&times;</button>
+            <h2>Aturan Pembelian</h2>
+            <ul class="rules-list">
+                <li><i class="fa-solid fa-check"></i><span><b>Kirim Bahan Jelas:</b> Siapkan Preset dan mentahan foto/video sebelum chat Admin (preset rusak wajib ganti).</span></li>
+                <li><i class="fa-solid fa-check"></i><span><b>Chat Admin:</b> Silahkan chat admin untuk transaksi lebih lanjut, Jika admin slow respon tunggu aja pasti dibales kok!.</span></li>
+                <li><i class="fa-solid fa-check"></i><span><b>Sistem Pembayaran:</b> Pembayaran di awal via E-Wallet.</span></li>
+                <li><i class="fa-solid fa-check"></i><span><b>Batas Maksimal Revisi:</b> Jatah maksimal 2x revisi minor setelah video selesai.</span></li>
+                <li><i class="fa-solid fa-check"></i><span><b>Waktu Pengerjaan:</b> Estimasi pengerjaan kilat 1-24 jam sesuai antrean.</span></li>
+                <li><i class="fa-solid fa-check"></i><span><b>No Refund:</b> Pesanan diproses tidak dapat dibatalkan atau direfund.</span></li>
+            </ul>
+            <button class="btn-modal-order" onclick="gasOrder()">
+                <i class="fa-brands fa-whatsapp"></i> Setuju & Pesan Sekarang
             </button>
         </div>
     </div>
@@ -345,7 +603,6 @@
     <script>
         const WHATSAPP_NUMBER = "6281398098107";
         let total = 0, deskripsi = "", mode = "", customQty = 0;
-        let currentInvoice = "";
 
         function pilihItem(element, nama, harga, tipe) {
             document.getElementById('input-custom').value = "";
@@ -373,79 +630,26 @@
             document.getElementById('grand-total').innerText = "Rp " + total.toLocaleString('id-ID');
         }
 
-        // Buka PopUp Pembayaran QRIS
-        function bukaPembayaran() {
+        function bukaAturan() {
             if (total === 0) { alert("Pilih paket dulu bro!"); return; }
-            
-            // Reset tampilan popup ke mode awal (QRIS)
-            document.getElementById('modal-header-title').innerText = "Pembayaran QRIS";
-            document.getElementById('modal-header-sub').innerText = "Silakan scan kode QRIS di bawah untuk membayar";
-            document.getElementById('qris-area').style.display = "flex";
-            document.getElementById('warning-area').style.display = "block";
-            document.getElementById('receipt-area').style.display = "none";
-            
-            // Atur tombol kembali ke mode "Saya Sudah Bayar"
-            const btnAction = document.getElementById('btn-action-modal');
-            btnAction.innerHTML = `<i class="fa-solid fa-circle-check"></i> Saya Sudah Bayar`;
-            btnAction.setAttribute("onclick", "prosesSudahBayar()");
-            btnAction.style.background = "#25d366";
-
-            document.getElementById('modalPembayaran').classList.add('show');
+            document.getElementById('modalAturan').classList.add('show');
             document.body.style.overflow = "hidden";
         }
 
-        function tutupPembayaran() {
-            document.getElementById('modalPembayaran').classList.remove('show');
+        function tutupAturan() {
+            document.getElementById('modalAturan').classList.remove('show');
             document.body.style.overflow = "auto";
         }
 
-        // Aksi ketika tombol "Saya Sudah Bayar" diklik -> Berubah Jadi Kwitansi
-        function prosesSudahBayar() {
-            // Generate data kwitansi acak & tanggal hari ini
-            currentInvoice = "REZZ-" + Math.floor(100000 + Math.random() * 900000);
-            const opsiTanggal = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-            const tanggalSekarang = new Date().toLocaleDateString('id-ID', opsiTanggal);
-
-            // Pasang data ke element Kwitansi HTML
-            document.getElementById('rcp-invoice').innerText = currentInvoice;
-            document.getElementById('rcp-paket').innerText = deskripsi;
-            document.getElementById('rcp-total').innerText = "Rp " + total.toLocaleString('id-ID');
-            document.getElementById('rcp-date').innerText = tanggalSekarang;
-
-            // Sembunyikan QRIS, Munculkan Kwitansi
-            document.getElementById('modal-header-title').innerText = "Kwitansi Pembelian";
-            document.getElementById('modal-header-sub').innerText = "Kwitansi kamu berhasil dibuat secara otomatis";
-            document.getElementById('qris-area').style.display = "none";
-            document.getElementById('warning-area').style.display = "none";
-            document.getElementById('receipt-area').style.display = "block";
-
-            // Ubah tombol fungsi menjadi "Kirim ke WA"
-            const btnAction = document.getElementById('btn-action-modal');
-            btnAction.innerHTML = `<i class="fa-brands fa-whatsapp"></i> Kirim Bukti & Pesan Sekarang`;
-            btnAction.setAttribute("onclick", "gasOrderKeWhatsApp()");
-            btnAction.style.background = "#00ff9d";
-            btnAction.style.color = "#020705";
+        function gasOrder() {
+            tutupAturan();
+            let message = mode === "custom" 
+                ? `Hai admin, saya ingin pesan ${customQty} video seharga ${total/1000}k via website.` 
+                : `Halo Admin REZZ STORE, saya mau pesan ${deskripsi} seharga Rp ${total.toLocaleString('id-ID')}`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
-        // Mengirim data teks Kwitansi langsung ke nomor WhatsApp kamu
-        function gasOrderKeWhatsApp() {
-            tutupPembayaran();
-            
-            // Format rapi isi teks pesan WA
-            let textMessage = 
-`*REZZ STORE - NOTIFIKASI ORDERAN BARU*
-----------------------------------------
-🧾 *NO. INVOICE :* ${currentInvoice}
-📦 *PAKET ORDER :* ${deskripsi}
-💰 *TOTAL BAYAR :* Rp ${total.toLocaleString('id-ID')}
-⚡ *STATUS :* DELIVERED / PROSES VALIDASI
-----------------------------------------
-_Note: Halo admin, saya sudah melakukan pembayaran di website. Berikut di bawah ini saya lampirkan juga SS bukti transaksinya._`;
-
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(textMessage)}`, '_blank');
-        }
-
-        // Autoplay Slider Testimoni
+        // JS BARU: Autoplay Slider Testimoni (Ganti teks setiap 3 detik)
         let currentTesti = 0;
         const testiCards = document.querySelectorAll('.testi-card');
         setInterval(() => {
